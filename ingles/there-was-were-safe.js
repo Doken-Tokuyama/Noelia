@@ -1,4 +1,27 @@
 // There Was/Were Application Data and Logic - SAFE VERSION
+
+// Función para mezclar aleatoriamente las opciones de respuesta
+function shuffleOptions(question) {
+  const originalOptions = [...question.options];
+  const correctAnswer = originalOptions[question.correct];
+  
+  // Mezclar las opciones aleatoriamente
+  const shuffledOptions = [...originalOptions];
+  for (let i = shuffledOptions.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffledOptions[i], shuffledOptions[j]] = [shuffledOptions[j], shuffledOptions[i]];
+  }
+  
+  // Encontrar la nueva posición de la respuesta correcta
+  const newCorrectIndex = shuffledOptions.indexOf(correctAnswer);
+  
+  return {
+    ...question,
+    options: shuffledOptions,
+    correct: newCorrectIndex
+  };
+}
+
 const thereWasWereData = {
   quizQuestions: [
     {
@@ -476,7 +499,9 @@ function showQuizQuestion() {
     return;
   }
   
-  const question = thereWasWereData.quizQuestions[currentQuestion];
+  // Aleatorizar las opciones para evitar patrones de respuesta
+  const originalQuestion = thereWasWereData.quizQuestions[currentQuestion];
+  const question = shuffleOptions(originalQuestion);
   const progressPercent = ((currentQuestion + 1) / thereWasWereData.quizQuestions.length) * 100;
   
   // Update progress safely
@@ -732,7 +757,9 @@ function showCompleteSentencesQuestion() {
     return;
   }
   
-  const question = thereWasWereData.completeSentences[currentQuestion];
+  // Aleatorizar las opciones para evitar patrones de respuesta
+  const originalQuestion = thereWasWereData.completeSentences[currentQuestion];
+  const question = shuffleOptions(originalQuestion);
   const progressPercent = ((currentQuestion + 1) / thereWasWereData.completeSentences.length) * 100;
   
   // Update progress safely

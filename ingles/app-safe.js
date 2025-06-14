@@ -1,4 +1,27 @@
 // Past Simple Learning App - SAFE VERSION AMPLIADA
+
+// Función para mezclar aleatoriamente las opciones de respuesta
+function shuffleOptions(question) {
+  const originalOptions = [...question.options];
+  const correctAnswer = originalOptions[question.correct];
+  
+  // Mezclar las opciones aleatoriamente
+  const shuffledOptions = [...originalOptions];
+  for (let i = shuffledOptions.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffledOptions[i], shuffledOptions[j]] = [shuffledOptions[j], shuffledOptions[i]];
+  }
+  
+  // Encontrar la nueva posición de la respuesta correcta
+  const newCorrectIndex = shuffledOptions.indexOf(correctAnswer);
+  
+  return {
+    ...question,
+    options: shuffledOptions,
+    correct: newCorrectIndex
+  };
+}
+
 const appData = {
   multipleChoiceQuestions: [
     {
@@ -556,7 +579,9 @@ function showMultipleChoiceQuestion() {
     return;
   }
   
-  const question = appData.multipleChoiceQuestions[currentQuestion];
+  // Aleatorizar las opciones de respuesta para evitar patrones
+  const originalQuestion = appData.multipleChoiceQuestions[currentQuestion];
+  const question = shuffleOptions(originalQuestion);
   
   const progressElement = document.getElementById('mc-progress');
   if (progressElement) {
@@ -1128,7 +1153,9 @@ function showFinalExamQuestion() {
     return;
   }
   
-  const question = appData.finalExamQuestions[finalExamData.currentQuestion];
+  // Aleatorizar las opciones del examen final también
+  const originalQuestion = appData.finalExamQuestions[finalExamData.currentQuestion];
+  const question = originalQuestion.type === 'multiple-choice' ? shuffleOptions(originalQuestion) : originalQuestion;
   
   const progressElement = document.getElementById('final-progress');
   if (progressElement) {
