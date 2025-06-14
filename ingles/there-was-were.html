@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>There Was/Were - Práctica de Inglés</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Welcome Screen -->
+        <div id="welcome-screen" class="screen active">
+            <div class="card welcome-card">
+                <div class="card__body">
+                    <div class="welcome-header">
+                        <i class="fas fa-map-marker-alt icon-heart"></i>
+                        <h1>¡Aprende "There Was/Were"!</h1>
+                        <i class="fas fa-star icon-star"></i>
+                    </div>
+                    <p>Domina el uso de "There was" y "There were" para describir lugares y situaciones en el pasado.</p>
+                    <div class="learning-stats">
+                        <div class="stat-card">
+                            <i class="fas fa-trophy"></i>
+                            <span id="total-points">0</span>
+                            <small>Puntos Totales</small>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-star"></i>
+                            <span id="streak-count">0</span>
+                            <small>Racha</small>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-medal"></i>
+                            <span id="level">Principiante</span>
+                            <small>Nivel</small>
+                        </div>
+                    </div>
+                    <ul class="exercise-list">
+                        <li><i class="fas fa-book-open"></i> <strong>Teoría Completa:</strong> Aprende cuándo usar "was" y "were"</li>
+                        <li><i class="fas fa-question-circle"></i> <strong>Quiz Interactivo:</strong> Preguntas con feedback inmediato</li>
+                        <li><i class="fas fa-edit"></i> <strong>Completar Oraciones:</strong> Practica con contexto real</li>
+                        <li><i class="fas fa-images"></i> <strong>Ejercicios Visuales:</strong> Describe imágenes usando there was/were</li>
+                        <li><i class="fas fa-microphone"></i> <strong>Práctica de Pronunciación:</strong> Escucha y repite</li>
+                    </ul>
+                    <button class="btn btn--primary btn--lg" onclick="showMainMenu()">
+                        <i class="fas fa-play"></i> ¡Comenzar a Aprender!
+                    </button>
+                    <button class="btn btn--outline btn--lg" onclick="goToMainApp()">
+                        <i class="fas fa-arrow-left"></i> Volver a Past Simple
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Menu -->
+        <div id="main-menu" class="screen">
+            <div class="card">
+                <div class="card__body">
+                    <h1><i class="fas fa-heart"></i> Elige tu Actividad</h1>
+                    <div class="points-display">
+                        <div class="points-badge">
+                            <i class="fas fa-gem"></i>
+                            <span id="current-points">0 puntos</span>
+                        </div>
+                    </div>
+                    <div class="exercise-grid">
+                        <div class="exercise-card" onclick="startExercise('theory')">
+                            <div class="difficulty-badge beginner">Básico</div>
+                            <i class="fas fa-graduation-cap exercise-icon"></i>
+                            <h3>Teoría Interactiva</h3>
+                            <p>Aprende las reglas de "there was/were" paso a paso</p>
+                            <div class="status status--info">
+                                <i class="fas fa-clock"></i> 10 min
+                            </div>
+                            <div class="points-reward">+50 puntos</div>
+                        </div>
+                        <div class="exercise-card" onclick="startExercise('quiz')">
+                            <div class="difficulty-badge intermediate">Intermedio</div>
+                            <i class="fas fa-question-circle exercise-icon"></i>
+                            <h3>Quiz Interactivo</h3>
+                            <p>Preguntas de opción múltiple con explicaciones</p>
+                            <div class="status status--info">
+                                <i class="fas fa-list"></i> 12 Preguntas
+                            </div>
+                            <div class="points-reward">+10 puntos por respuesta</div>
+                        </div>
+                        <div class="exercise-card" onclick="startExercise('complete-sentences')">
+                            <div class="difficulty-badge intermediate">Intermedio</div>
+                            <i class="fas fa-pen-fancy exercise-icon"></i>
+                            <h3>Completar Oraciones</h3>
+                            <p>There was/wasn't/were/weren't</p>
+                            <div class="status status--info">
+                                <i class="fas fa-edit"></i> 20 Oraciones
+                            </div>
+                            <div class="points-reward">+15 puntos por respuesta</div>
+                        </div>
+                        <div class="exercise-card" onclick="startExercise('complete-questions')">
+                            <div class="difficulty-badge intermediate">Intermedio</div>
+                            <i class="fas fa-question exercise-icon"></i>
+                            <h3>Completar Preguntas</h3>
+                            <p>Was there / Were there</p>
+                            <div class="status status--info">
+                                <i class="fas fa-question-circle"></i> 15 Preguntas
+                            </div>
+                            <div class="points-reward">+18 puntos por respuesta</div>
+                        </div>
+                        <div class="exercise-card" onclick="startExercise('finish-sentences')">
+                            <div class="difficulty-badge advanced">Avanzado</div>
+                            <i class="fas fa-magic exercise-icon"></i>
+                            <h3>Terminar Oraciones</h3>
+                            <p>Elige la mejor continuación</p>
+                            <div class="status status--warning">
+                                <i class="fas fa-lightbulb"></i> 18 Oraciones
+                            </div>
+                            <div class="points-reward">+20 puntos por respuesta</div>
+                        </div>
+                        <div class="exercise-card" onclick="startExercise('visual')">
+                            <div class="difficulty-badge advanced">Avanzado</div>
+                            <i class="fas fa-images exercise-icon"></i>
+                            <h3>Ejercicios Visuales</h3>
+                            <p>Describe imágenes usando there was/were</p>
+                            <div class="status status--warning">
+                                <i class="fas fa-eye"></i> 10 Imágenes
+                            </div>
+                            <div class="points-reward">+25 puntos por respuesta</div>
+                        </div>
+                        <div class="exercise-card" onclick="startExercise('pronunciation')">
+                            <div class="difficulty-badge advanced">Avanzado</div>
+                            <i class="fas fa-microphone exercise-icon"></i>
+                            <h3>Pronunciación</h3>
+                            <p>Escucha y practica la pronunciación correcta</p>
+                            <div class="status status--success">
+                                <i class="fas fa-volume-up"></i> 8 Ejercicios
+                            </div>
+                            <div class="points-reward">+30 puntos por ejercicio</div>
+                        </div>
+                        <div class="exercise-card challenge" onclick="startExercise('challenge')">
+                            <div class="difficulty-badge expert">Experto</div>
+                            <i class="fas fa-trophy exercise-icon"></i>
+                            <h3>Desafío Final</h3>
+                            <p>Demuestra todo lo que has aprendido</p>
+                            <div class="status status--warning">
+                                <i class="fas fa-fire"></i> 20 Preguntas
+                            </div>
+                            <div class="points-reward">+500 puntos bonus</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Theory Section -->
+        <div id="theory" class="screen">
+            <div class="card">
+                <div class="card__body">
+                    <div class="exercise-header">
+                        <button class="btn btn--outline btn--sm" onclick="showMainMenu()">
+                            <i class="fas fa-arrow-left"></i> Volver al Menú
+                        </button>
+                        <div class="progress-info">
+                            <span><i class="fas fa-book"></i> Teoría: There Was/Were</span>
+                            <div class="points-mini">
+                                <i class="fas fa-gem"></i> <span id="theory-points">0</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="theory-content">
+                        <div class="theory-section active" id="theory-1">
+                            <h2><i class="fas fa-lightbulb"></i> ¿Qué significa "There was/were"?</h2>
+                            <div class="theory-card">
+                                <p>Usamos <strong>"There was"</strong> y <strong>"There were"</strong> para indicar que algo existía o estaba presente en un lugar en el pasado.</p>
+                                <div class="comparison-box">
+                                    <div class="comparison-item">
+                                        <h4><i class="fas fa-user"></i> THERE WAS (Singular)</h4>
+                                        <p>Para una persona, animal o cosa</p>
+                                        <div class="examples">
+                                            <span>There <strong>was</strong> a cat in the garden.</span>
+                                            <span>There <strong>was</strong> a book on the table.</span>
+                                        </div>
+                                    </div>
+                                    <div class="comparison-item">
+                                        <h4><i class="fas fa-users"></i> THERE WERE (Plural)</h4>
+                                        <p>Para varias personas, animales o cosas</p>
+                                        <div class="examples">
+                                            <span>There <strong>were</strong> many cats in the garden.</span>
+                                            <span>There <strong>were</strong> books on the table.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tip-box">
+                                    <i class="fas fa-star"></i>
+                                    <p><strong>¡Tip importante!</strong> Fíjate en si lo que sigue es singular o plural para elegir "was" o "were".</p>
+                                </div>
+                            </div>
+                            <button class="btn btn--primary" onclick="nextTheorySection(); addPoints(10, 'Teoría completada');">
+                                <i class="fas fa-arrow-right"></i> Siguiente (+10 puntos)
+                            </button>
+                        </div>
+                        
+                        <div class="theory-section" id="theory-2">
+                            <h2><i class="fas fa-times-circle"></i> Formas Negativas</h2>
+                            <div class="theory-card">
+                                <p>Para hacer negativo, añadimos <strong>"not"</strong> después de was/were:</p>
+                                <div class="negative-forms">
+                                    <div class="form-card">
+                                        <h4><i class="fas fa-user"></i> There wasn't</h4>
+                                        <p><strong>There was not</strong> = <strong>There wasn't</strong></p>
+                                        <div class="examples">
+                                            <span>There <strong>wasn't</strong> a cat in the garden.</span>
+                                            <span>There <strong>wasn't</strong> any milk in the fridge.</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-card">
+                                        <h4><i class="fas fa-users"></i> There weren't</h4>
+                                        <p><strong>There were not</strong> = <strong>There weren't</strong></p>
+                                        <div class="examples">
+                                            <span>There <strong>weren't</strong> any cats in the garden.</span>
+                                            <span>There <strong>weren't</strong> many people at the party.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="theory-navigation">
+                                <button class="btn btn--outline" onclick="prevTheorySection()">
+                                    <i class="fas fa-arrow-left"></i> Anterior
+                                </button>
+                                <button class="btn btn--primary" onclick="nextTheorySection(); addPoints(10, '¡Aprendiendo negativas!');">
+                                    <i class="fas fa-arrow-right"></i> Siguiente (+10 puntos)
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="theory-section" id="theory-3">
+                            <h2><i class="fas fa-question"></i> Preguntas</h2>
+                            <div class="theory-card">
+                                <p>Para hacer preguntas, ponemos <strong>was/were</strong> al principio:</p>
+                                <div class="question-forms">
+                                    <div class="form-card">
+                                        <h4><i class="fas fa-question-circle"></i> Was there...?</h4>
+                                        <div class="examples">
+                                            <span><strong>Was there</strong> a cat in the garden?</span>
+                                            <span><strong>Was there</strong> any milk in the fridge?</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-card">
+                                        <h4><i class="fas fa-question-circle"></i> Were there...?</h4>
+                                        <div class="examples">
+                                            <span><strong>Were there</strong> any cats in the garden?</span>
+                                            <span><strong>Were there</strong> many people at the party?</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="answer-patterns">
+                                    <h4><i class="fas fa-comments"></i> Respuestas típicas:</h4>
+                                    <div class="answer-grid">
+                                        <div class="answer-type positive">
+                                            <h5>Positivas</h5>
+                                            <span>Yes, there was.</span>
+                                            <span>Yes, there were.</span>
+                                        </div>
+                                        <div class="answer-type negative">
+                                            <h5>Negativas</h5>
+                                            <span>No, there wasn't.</span>
+                                            <span>No, there weren't.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="theory-navigation">
+                                <button class="btn btn--outline" onclick="prevTheorySection()">
+                                    <i class="fas fa-arrow-left"></i> Anterior
+                                </button>
+                                <button class="btn btn--primary" onclick="nextTheorySection(); addPoints(15, '¡Preguntas dominadas!');">
+                                    <i class="fas fa-arrow-right"></i> Siguiente (+15 puntos)
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="theory-section" id="theory-4">
+                            <h2><i class="fas fa-check-circle"></i> ¡Teoría Completada!</h2>
+                            <div class="theory-card completion-card">
+                                <div class="completion-celebration">
+                                    <i class="fas fa-trophy celebration-icon"></i>
+                                    <h3>¡Felicitaciones!</h3>
+                                    <p>Has completado toda la teoría de "There was/were"</p>
+                                </div>
+                                <div class="summary-grid">
+                                    <div class="summary-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>There was/were (afirmativo)</span>
+                                    </div>
+                                    <div class="summary-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>There wasn't/weren't (negativo)</span>
+                                    </div>
+                                    <div class="summary-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>Was/Were there...? (preguntas)</span>
+                                    </div>
+                                </div>
+                                <div class="bonus-points">
+                                    <i class="fas fa-gift"></i>
+                                    <p>¡Bonus por completar la teoría: +25 puntos!</p>
+                                </div>
+                            </div>
+                            <div class="theory-navigation">
+                                <button class="btn btn--outline" onclick="prevTheorySection()">
+                                    <i class="fas fa-arrow-left"></i> Anterior
+                                </button>
+                                <button class="btn btn--primary" onclick="showMainMenu(); addPoints(25, '¡Teoría completada!');">
+                                    <i class="fas fa-home"></i> Volver al Menú (+25 puntos)
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quiz Section -->
+        <div id="quiz" class="screen">
+            <div class="card">
+                <div class="card__body">
+                    <div class="exercise-header">
+                        <button class="btn btn--outline btn--sm" onclick="showMainMenu()">
+                            <i class="fas fa-arrow-left"></i> Volver al Menú
+                        </button>
+                        <div class="progress-info">
+                            <span id="quiz-progress"><i class="fas fa-question-circle"></i> Pregunta 1 de 12</span>
+                            <div class="progress-bar">
+                                <div id="quiz-progress-fill" class="progress-fill"></div>
+                            </div>
+                            <div class="points-mini">
+                                <i class="fas fa-gem"></i> <span id="quiz-points">0</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="quiz-question-container">
+                        <h2 id="quiz-question">La pregunta aparecerá aquí</h2>
+                        <div id="quiz-context" class="context-box"></div>
+                        <div id="quiz-options" class="options-grid">
+                            <!-- Options will be populated by JavaScript -->
+                        </div>
+                        <div id="quiz-feedback" class="feedback"></div>
+                        <div id="quiz-explanation" class="explanation hidden"></div>
+                    </div>
+                    <div id="quiz-results" class="results hidden">
+                        <div class="results-celebration">
+                            <i class="fas fa-star celebration-icon"></i>
+                            <h2>¡Quiz Completado!</h2>
+                        </div>
+                        <div class="score-display">
+                            <div class="score-circle">
+                                <span id="quiz-score">0/12</span>
+                                <small id="quiz-percentage">0%</small>
+                            </div>
+                            <div class="points-earned">
+                                <i class="fas fa-gem"></i>
+                                <span id="quiz-total-points">0 puntos ganados</span>
+                            </div>
+                        </div>
+                        <div id="quiz-message" class="result-message"></div>
+                        <div class="result-actions">
+                            <button class="btn btn--primary" onclick="startExercise('quiz')">
+                                <i class="fas fa-redo"></i> Repetir Quiz
+                            </button>
+                            <button class="btn btn--outline" onclick="showMainMenu()">
+                                <i class="fas fa-home"></i> Volver al Menú
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Complete Sentences Section -->
+        <div id="complete-sentences" class="screen">
+            <div class="card">
+                <div class="card__body">
+                    <div class="exercise-header">
+                        <button class="btn btn--outline btn--sm" onclick="showMainMenu()">
+                            <i class="fas fa-arrow-left"></i> Volver al Menú
+                        </button>
+                        <div class="progress-info">
+                            <span id="complete-sentences-progress"><i class="fas fa-pen-fancy"></i> Oración 1 de 20</span>
+                            <div class="progress-bar">
+                                <div id="complete-sentences-progress-fill" class="progress-fill"></div>
+                            </div>
+                            <div class="points-mini">
+                                <i class="fas fa-gem"></i> <span id="complete-sentences-points">0</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="complete-sentences-container">
+                        <div class="exercise-instruction">
+                            <h2><i class="fas fa-edit"></i> Completa las oraciones</h2>
+                            <p>Elige la opción correcta: <strong>There was</strong>, <strong>There wasn't</strong>, <strong>There were</strong> o <strong>There weren't</strong></p>
+                        </div>
+                        <div id="complete-sentences-question">
+                            <div class="sentence-context" id="complete-sentences-context"></div>
+                            <div class="sentence-display" id="complete-sentences-sentence"></div>
+                            <div class="translation-hint" id="complete-sentences-translation"></div>
+                            <div class="options-grid" id="complete-sentences-options">
+                                <!-- Options will be populated by JavaScript -->
+                            </div>
+                            <div id="complete-sentences-feedback" class="feedback"></div>
+                        </div>
+                    </div>
+                    <div id="complete-sentences-results" class="results hidden">
+                        <div class="results-celebration">
+                            <i class="fas fa-trophy celebration-icon"></i>
+                            <h2>¡Ejercicio Completado!</h2>
+                        </div>
+                        <div class="score-display">
+                            <div class="score-circle">
+                                <span id="complete-sentences-score">0/20</span>
+                                <small id="complete-sentences-percentage">0%</small>
+                            </div>
+                            <div class="points-earned">
+                                <i class="fas fa-gem"></i>
+                                <span id="complete-sentences-total-points">0 puntos ganados</span>
+                            </div>
+                        </div>
+                        <div id="complete-sentences-message" class="result-message"></div>
+                        <div class="result-actions">
+                            <button class="btn btn--primary" onclick="startExercise('complete-sentences')">
+                                <i class="fas fa-redo"></i> Repetir Ejercicio
+                            </button>
+                            <button class="btn btn--outline" onclick="showMainMenu()">
+                                <i class="fas fa-home"></i> Volver al Menú
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Complete Questions Section -->
+        <div id="complete-questions" class="screen">
+            <div class="card">
+                <div class="card__body">
+                    <div class="exercise-header">
+                        <button class="btn btn--outline btn--sm" onclick="showMainMenu()">
+                            <i class="fas fa-arrow-left"></i> Volver al Menú
+                        </button>
+                        <div class="progress-info">
+                            <span id="complete-questions-progress"><i class="fas fa-question"></i> Pregunta 1 de 15</span>
+                            <div class="progress-bar">
+                                <div id="complete-questions-progress-fill" class="progress-fill"></div>
+                            </div>
+                            <div class="points-mini">
+                                <i class="fas fa-gem"></i> <span id="complete-questions-points">0</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="complete-questions-container">
+                        <div class="exercise-instruction">
+                            <h2><i class="fas fa-question-circle"></i> Completa las preguntas</h2>
+                            <p>Elige la opción correcta: <strong>Was there</strong> o <strong>Were there</strong></p>
+                        </div>
+                        <div id="complete-questions-question">
+                            <div class="sentence-context" id="complete-questions-context"></div>
+                            <div class="sentence-display" id="complete-questions-sentence"></div>
+                            <div class="translation-hint" id="complete-questions-translation"></div>
+                            <div class="options-grid" id="complete-questions-options">
+                                <!-- Options will be populated by JavaScript -->
+                            </div>
+                            <div id="complete-questions-feedback" class="feedback"></div>
+                        </div>
+                    </div>
+                    <div id="complete-questions-results" class="results hidden">
+                        <div class="results-celebration">
+                            <i class="fas fa-star celebration-icon"></i>
+                            <h2>¡Preguntas Completadas!</h2>
+                        </div>
+                        <div class="score-display">
+                            <div class="score-circle">
+                                <span id="complete-questions-score">0/15</span>
+                                <small id="complete-questions-percentage">0%</small>
+                            </div>
+                            <div class="points-earned">
+                                <i class="fas fa-gem"></i>
+                                <span id="complete-questions-total-points">0 puntos ganados</span>
+                            </div>
+                        </div>
+                        <div id="complete-questions-message" class="result-message"></div>
+                        <div class="result-actions">
+                            <button class="btn btn--primary" onclick="startExercise('complete-questions')">
+                                <i class="fas fa-redo"></i> Repetir Ejercicio
+                            </button>
+                            <button class="btn btn--outline" onclick="showMainMenu()">
+                                <i class="fas fa-home"></i> Volver al Menú
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Finish Sentences Section -->
+        <div id="finish-sentences" class="screen">
+            <div class="card">
+                <div class="card__body">
+                    <div class="exercise-header">
+                        <button class="btn btn--outline btn--sm" onclick="showMainMenu()">
+                            <i class="fas fa-arrow-left"></i> Volver al Menú
+                        </button>
+                        <div class="progress-info">
+                            <span id="finish-sentences-progress"><i class="fas fa-magic"></i> Oración 1 de 18</span>
+                            <div class="progress-bar">
+                                <div id="finish-sentences-progress-fill" class="progress-fill"></div>
+                            </div>
+                            <div class="points-mini">
+                                <i class="fas fa-gem"></i> <span id="finish-sentences-points">0</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="finish-sentences-container">
+                        <div class="exercise-instruction">
+                            <h2><i class="fas fa-lightbulb"></i> Termina las oraciones</h2>
+                            <p>Elige la mejor continuación para cada oración comenzada con <strong>There was</strong>, <strong>There were</strong>, etc.</p>
+                        </div>
+                        <div id="finish-sentences-question">
+                            <div class="sentence-context" id="finish-sentences-context"></div>
+                            <div class="sentence-starter" id="finish-sentences-starter"></div>
+                            <div class="translation-hint" id="finish-sentences-translation"></div>
+                            <div class="options-grid" id="finish-sentences-options">
+                                <!-- Options will be populated by JavaScript -->
+                            </div>
+                            <div id="finish-sentences-feedback" class="feedback"></div>
+                        </div>
+                    </div>
+                    <div id="finish-sentences-results" class="results hidden">
+                        <div class="results-celebration">
+                            <i class="fas fa-magic celebration-icon"></i>
+                            <h2>¡Oraciones Terminadas!</h2>
+                        </div>
+                        <div class="score-display">
+                            <div class="score-circle">
+                                <span id="finish-sentences-score">0/18</span>
+                                <small id="finish-sentences-percentage">0%</small>
+                            </div>
+                            <div class="points-earned">
+                                <i class="fas fa-gem"></i>
+                                <span id="finish-sentences-total-points">0 puntos ganados</span>
+                            </div>
+                        </div>
+                        <div id="finish-sentences-message" class="result-message"></div>
+                        <div class="result-actions">
+                            <button class="btn btn--primary" onclick="startExercise('finish-sentences')">
+                                <i class="fas fa-redo"></i> Repetir Ejercicio
+                            </button>
+                            <button class="btn btn--outline" onclick="showMainMenu()">
+                                <i class="fas fa-home"></i> Volver al Menú
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="there-was-were-safe.js"></script>
+</body>
+</html> 

@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparatives & Superlatives - Aprende Inglés</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Welcome Screen -->
+        <div id="welcome-screen" class="screen active">
+            <div class="card welcome-card">
+                <div class="card__body">
+                    <div class="welcome-header">
+                        <i class="fas fa-chart-line icon-heart"></i>
+                        <h1>¡Domina los Comparativos y Superlativos!</h1>
+                        <i class="fas fa-trophy icon-star"></i>
+                    </div>
+                    <p>Aprende a comparar y expresar el grado máximo de las cosas. ¡Conviértete en el <strong>BEST</strong> estudiante! 🌟</p>
+                    
+                    <div class="comparison-showcase">
+                        <div class="showcase-row">
+                            <div class="comparison-example positive">
+                                <i class="fas fa-plus"></i>
+                                <h3>Positivo</h3>
+                                <div class="example-word">TALL</div>
+                                <p>She is tall</p>
+                            </div>
+                            <div class="comparison-example comparative">
+                                <i class="fas fa-balance-scale"></i>
+                                <h3>Comparativo</h3>
+                                <div class="example-word">TALLER</div>
+                                <p>She is taller than me</p>
+                            </div>
+                            <div class="comparison-example superlative">
+                                <i class="fas fa-crown"></i>
+                                <h3>Superlativo</h3>
+                                <div class="example-word">THE TALLEST</div>
+                                <p>She is the tallest in class</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="learning-stats">
+                        <div class="stat-card">
+                            <i class="fas fa-gem"></i>
+                            <span id="total-points">0</span>
+                            <small>Puntos Ganados</small>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span id="lessons-completed">0</span>
+                            <small>Lecciones Completadas</small>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-fire"></i>
+                            <span id="streak-count">0</span>
+                            <small>Racha Perfecta</small>
+                        </div>
+                    </div>
+
+                    <div class="motivation-section">
+                        <div class="daily-inspiration">
+                            <i class="fas fa-quote-left"></i>
+                            <p id="daily-quote">¡Eres STRONGER than you think y SMARTER than you believe! 💪</p>
+                            <i class="fas fa-quote-right"></i>
+                        </div>
+                    </div>
+
+                    <div class="learning-preview">
+                        <h3><i class="fas fa-list-check"></i> Lo que vas a dominar:</h3>
+                        <div class="preview-grid">
+                            <div class="preview-item">
+                                <i class="fas fa-book-open"></i>
+                                <div class="preview-content">
+                                    <h4>Teoría Completa</h4>
+                                    <p>Reglas claras para adjetivos cortos y largos</p>
+                                </div>
+                            </div>
+                            <div class="preview-item">
+                                <i class="fas fa-puzzle-piece"></i>
+                                <div class="preview-content">
+                                    <h4>Ejercicios Interactivos</h4>
+                                    <p>30+ ejercicios con feedback inmediato</p>
+                                </div>
+                            </div>
+                            <div class="preview-item">
+                                <i class="fas fa-comments"></i>
+                                <div class="preview-content">
+                                    <h4>Situaciones Reales</h4>
+                                    <p>Compara personas, lugares y cosas</p>
+                                </div>
+                            </div>
+                            <div class="preview-item">
+                                <i class="fas fa-star"></i>
+                                <div class="preview-content">
+                                    <h4>Irregulares Especiales</h4>
+                                    <p>Good→Better→Best y más</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="btn btn--primary btn--lg pulse-animation" onclick="showMainMenu()">
+                            <i class="fas fa-rocket"></i> ¡Empezar a Comparar!
+                        </button>
+                        <button class="btn btn--outline btn--lg" onclick="goToMainApp()">
+                            <i class="fas fa-arrow-left"></i> Volver al Menú Principal
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Menu -->
+        <div id="main-menu" class="screen">
+            <div class="card">
+                <div class="card__body">
+                    <h1><i class="fas fa-chart-bar"></i> Elige tu Aventura Comparativa</h1>
+                    
+                    <div class="progress-dashboard">
+                        <div class="dashboard-metric">
+                            <div class="metric-circle">
+                                <i class="fas fa-coins"></i>
+                                <span id="menu-points">0</span>
+                            </div>
+                            <p>Puntos Totales</p>
+                        </div>
+                        <div class="dashboard-metric">
+                            <div class="level-indicator">
+                                <i class="fas fa-medal"></i>
+                                <span id="current-level">Principiante</span>
+                            </div>
+                            <p>Nivel Actual</p>
+                        </div>
+                        <div class="dashboard-metric">
+                            <div class="accuracy-meter">
+                                <i class="fas fa-bullseye"></i>
+                                <span id="accuracy-rate">0%</span>
+                            </div>
+                            <p>Precisión</p>
+                        </div>
+                    </div>
+
+                    <div class="exercise-grid">
+                        <div class="exercise-card" onclick="startExercise('theory')">
+                            <div class="difficulty-badge beginner">Básico</div>
+                            <i class="fas fa-book-open exercise-icon"></i>
+                            <h3>Teoría Interactiva</h3>
+                            <p>Aprende las reglas paso a paso con ejemplos claros</p>
+                            <div class="status status--info">
+                                <i class="fas fa-clock"></i> 12 minutos
+                            </div>
+                            <div class="points-reward">+75 puntos</div>
+                        </div>
+
+                        <div class="exercise-card" onclick="startExercise('short-adjectives')">
+                            <div class="difficulty-badge beginner">Básico</div>
+                            <i class="fas fa-text-height exercise-icon"></i>
+                            <h3>Adjetivos Cortos</h3>
+                            <p>Practica con tall→taller→tallest y similares</p>
+                            <div class="status status--info">
+                                <i class="fas fa-list"></i> 15 Ejercicios
+                            </div>
+                            <div class="points-reward">+12 puntos por ejercicio</div>
+                        </div>
+
+                        <div class="exercise-card" onclick="startExercise('long-adjectives')">
+                            <div class="difficulty-badge intermediate">Intermedio</div>
+                            <i class="fas fa-text-width exercise-icon"></i>
+                            <h3>Adjetivos Largos</h3>
+                            <p>Domina more/most con adjetivos de 2+ sílabas</p>
+                            <div class="status status--warning">
+                                <i class="fas fa-brain"></i> 15 Ejercicios
+                            </div>
+                            <div class="points-reward">+15 puntos por ejercicio</div>
+                        </div>
+
+                        <div class="exercise-card" onclick="startExercise('irregular-forms')">
+                            <div class="difficulty-badge intermediate">Intermedio</div>
+                            <i class="fas fa-magic exercise-icon"></i>
+                            <h3>Formas Irregulares</h3>
+                            <p>Good→Better→Best y otros casos especiales</p>
+                            <div class="status status--warning">
+                                <i class="fas fa-star"></i> 12 Ejercicios
+                            </div>
+                            <div class="points-reward">+20 puntos por ejercicio</div>
+                        </div>
+
+                        <div class="exercise-card" onclick="startExercise('real-comparisons')">
+                            <div class="difficulty-badge advanced">Avanzado</div>
+                            <i class="fas fa-people-arrows exercise-icon"></i>
+                            <h3>Comparaciones Reales</h3>
+                            <p>Compara personas, ciudades, animales en contexto</p>
+                            <div class="status status--error">
+                                <i class="fas fa-globe"></i> 20 Situaciones
+                            </div>
+                            <div class="points-reward">+25 puntos por situación</div>
+                        </div>
+
+                        <div class="exercise-card challenge" onclick="startExercise('master-challenge')">
+                            <div class="difficulty-badge expert">Experto</div>
+                            <i class="fas fa-crown exercise-icon"></i>
+                            <h3>Desafío Supremo</h3>
+                            <p>La prueba definitiva: ¡conviértete en THE BEST!</p>
+                            <div class="status status--error">
+                                <i class="fas fa-trophy"></i> 30 Preguntas
+                            </div>
+                            <div class="points-reward">+1500 puntos bonus</div>
+                        </div>
+                    </div>
+
+                    <div class="quick-reference">
+                        <h3><i class="fas fa-lightbulb"></i> Referencia Rápida</h3>
+                        <div class="reference-grid">
+                            <div class="reference-card">
+                                <h4><i class="fas fa-plus"></i> Adjetivos Cortos</h4>
+                                <p><strong>+er / +est</strong></p>
+                                <span>tall → taller → tallest</span>
+                            </div>
+                            <div class="reference-card">
+                                <h4><i class="fas fa-expand"></i> Adjetivos Largos</h4>
+                                <p><strong>more / most</strong></p>
+                                <span>beautiful → more beautiful → most beautiful</span>
+                            </div>
+                            <div class="reference-card">
+                                <h4><i class="fas fa-magic"></i> Irregulares</h4>
+                                <p><strong>Formas especiales</strong></p>
+                                <span>good → better → best</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Theory Section -->
+        <div id="theory" class="screen">
+            <div class="card">
+                <div class="card__body">
+                    <div class="exercise-header">
+                        <button class="btn btn--outline btn--sm" onclick="showMainMenu()">
+                            <i class="fas fa-arrow-left"></i> Volver al Menú
+                        </button>
+                        <div class="progress-info">
+                            <span><i class="fas fa-book-open"></i> Teoría: Comparativos y Superlativos</span>
+                            <div class="points-mini">
+                                <i class="fas fa-gem"></i> <span id="theory-points">0</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="theory-content">
+                        <div class="theory-section active" id="theory-1">
+                            <h2><i class="fas fa-star"></i> ¿Qué son los Comparativos y Superlativos?</h2>
+                            <div class="theory-card">
+                                <p>Los <strong>comparativos</strong> y <strong>superlativos</strong> nos ayudan a comparar cosas y expresar el grado máximo de una cualidad.</p>
+                                
+                                <div class="comparison-levels">
+                                    <div class="level-card positive">
+                                        <i class="fas fa-user"></i>
+                                        <h4>POSITIVO</h4>
+                                        <p>Describe una cualidad normal</p>
+                                        <div class="examples">
+                                            <span>This car is <strong>fast</strong></span>
+                                            <span>She is <strong>intelligent</strong></span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="level-card comparative">
+                                        <i class="fas fa-balance-scale"></i>
+                                        <h4>COMPARATIVO</h4>
+                                        <p>Compara dos cosas</p>
+                                        <div class="examples">
+                                            <span>This car is <strong>faster than</strong> that one</span>
+                                            <span>She is <strong>more intelligent than</strong> him</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="level-card superlative">
+                                        <i class="fas fa-crown"></i>
+                                        <h4>SUPERLATIVO</h4>
+                                        <p>Expresa el grado máximo</p>
+                                        <div class="examples">
+                                            <span>This is <strong>the fastest</strong> car</span>
+                                            <span>She is <strong>the most intelligent</strong> student</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="key-insight">
+                                    <i class="fas fa-key"></i>
+                                    <p><strong>Clave:</strong> Los comparativos comparan DOS cosas, los superlativos muestran cuál es LA MEJOR de TODAS.</p>
+                                </div>
+                            </div>
+                            <button class="btn btn--primary" onclick="nextTheorySection(); addPoints(15, '¡Conceptos básicos dominados!');">
+                                <i class="fas fa-arrow-right"></i> Siguiente (+15 puntos)
+                            </button>
+                        </div>
+
+                        <div class="theory-section" id="theory-2">
+                            <h2><i class="fas fa-text-height"></i> Adjetivos Cortos (1 sílaba)</h2>
+                            <div class="theory-card">
+                                <p>Para adjetivos de <strong>1 sílaba</strong>, añadimos <strong>-er</strong> (comparativo) y <strong>-est</strong> (superlativo):</p>
+                                
+                                <div class="rules-section">
+                                    <div class="rule-item">
+                                        <h4><i class="fas fa-plus"></i> Regla básica: +er / +est</h4>
+                                        <div class="rule-examples">
+                                            <div class="example-row">
+                                                <span class="base">tall</span>
+                                                <span class="arrow">→</span>
+                                                <span class="comparative">taller</span>
+                                                <span class="arrow">→</span>
+                                                <span class="superlative">the tallest</span>
+                                            </div>
+                                            <div class="example-row">
+                                                <span class="base">old</span>
+                                                <span class="arrow">→</span>
+                                                <span class="comparative">older</span>
+                                                <span class="arrow">→</span>
+                                                <span class="superlative">the oldest</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="rule-item">
+                                        <h4><i class="fas fa-edit"></i> Termina en 'e': +r / +st</h4>
+                                        <div class="rule-examples">
+                                            <div class="example-row">
+                                                <span class="base">nice</span>
+                                                <span class="arrow">→</span>
+                                                <span class="comparative">nicer</span>
+                                                <span class="arrow">→</span>
+                                                <span class="superlative">the nicest</span>
+                                            </div>
+                                            <div class="example-row">
+                                                <span class="base">large</span>
+                                                <span class="arrow">→</span>
+                                                <span class="comparative">larger</span>
+                                                <span class="arrow">→</span>
+                                                <span class="superlative">the largest</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="rule-item">
+                                        <h4><i class="fas fa-compress"></i> Consonante + vocal + consonante: doblar</h4>
+                                        <div class="rule-examples">
+                                            <div class="example-row">
+                                                <span class="base">big</span>
+                                                <span class="arrow">→</span>
+                                                <span class="comparative">bigger</span>
+                                                <span class="arrow">→</span>
+                                                <span class="superlative">the biggest</span>
+                                            </div>
+                                            <div class="example-row">
+                                                <span class="base">hot</span>
+                                                <span class="arrow">→</span>
+                                                <span class="comparative">hotter</span>
+                                                <span class="arrow">→</span>
+                                                <span class="superlative">the hottest</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="theory-navigation">
+                                <button class="btn btn--outline" onclick="prevTheorySection()">
+                                    <i class="fas fa-arrow-left"></i> Anterior
+                                </button>
+                                <button class="btn btn--primary" onclick="nextTheorySection(); addPoints(20, '¡Adjetivos cortos dominados!');">
+                                    <i class="fas fa-arrow-right"></i> Siguiente (+20 puntos)
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="theory-section" id="theory-3">
+                            <h2><i class="fas fa-text-width"></i> Adjetivos Largos (2+ sílabas)</h2>
+                            <div class="theory-card">
+                                <p>Para adjetivos de <strong>2 o más sílabas</strong>, usamos <strong>more</strong> (comparativo) y <strong>most</strong> (superlativo):</p>
+                                
+                                <div class="long-adjectives-examples">
+                                    <div class="adjective-transformation">
+                                        <div class="transformation-row">
+                                            <span class="base-adj">beautiful</span>
+                                            <div class="transformations">
+                                                <span class="comp-form">more beautiful</span>
+                                                <span class="sup-form">the most beautiful</span>
+                                            </div>
+                                        </div>
+                                        <div class="transformation-row">
+                                            <span class="base-adj">expensive</span>
+                                            <div class="transformations">
+                                                <span class="comp-form">more expensive</span>
+                                                <span class="sup-form">the most expensive</span>
+                                            </div>
+                                        </div>
+                                        <div class="transformation-row">
+                                            <span class="base-adj">intelligent</span>
+                                            <div class="transformations">
+                                                <span class="comp-form">more intelligent</span>
+                                                <span class="sup-form">the most intelligent</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="special-cases">
+                                    <h4><i class="fas fa-exclamation-triangle"></i> Casos Especiales de 2 Sílabas</h4>
+                                    <p>Algunos adjetivos de 2 sílabas pueden usar ambas formas:</p>
+                                    <div class="special-examples">
+                                        <div class="special-item">
+                                            <span class="adj">clever</span>
+                                            <span class="options">→ cleverer / more clever → cleverest / most clever</span>
+                                        </div>
+                                        <div class="special-item">
+                                            <span class="adj">simple</span>
+                                            <span class="options">→ simpler / more simple → simplest / most simple</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="memory-tip">
+                                    <i class="fas fa-brain"></i>
+                                    <p><strong>Truco para recordar:</strong> Si el adjetivo es largo y difícil de pronunciar con -er/-est, usa more/most.</p>
+                                </div>
+                            </div>
+                            <div class="theory-navigation">
+                                <button class="btn btn--outline" onclick="prevTheorySection()">
+                                    <i class="fas fa-arrow-left"></i> Anterior
+                                </button>
+                                <button class="btn btn--primary" onclick="nextTheorySection(); addPoints(20, '¡Adjetivos largos conquistados!');">
+                                    <i class="fas fa-arrow-right"></i> Siguiente (+20 puntos)
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="theory-section" id="theory-4">
+                            <h2><i class="fas fa-magic"></i> Formas Irregulares</h2>
+                            <div class="theory-card">
+                                <p>Algunos adjetivos muy comunes tienen formas <strong>completamente irregulares</strong> que debes memorizar:</p>
+                                
+                                <div class="irregular-table">
+                                    <div class="irregular-header">
+                                        <span>Positivo</span>
+                                        <span>Comparativo</span>
+                                        <span>Superlativo</span>
+                                    </div>
+                                    <div class="irregular-row">
+                                        <span class="positive">good</span>
+                                        <span class="comparative">better</span>
+                                        <span class="superlative">the best</span>
+                                    </div>
+                                    <div class="irregular-row">
+                                        <span class="positive">bad</span>
+                                        <span class="comparative">worse</span>
+                                        <span class="superlative">the worst</span>
+                                    </div>
+                                    <div class="irregular-row">
+                                        <span class="positive">far</span>
+                                        <span class="comparative">farther/further</span>
+                                        <span class="superlative">the farthest/furthest</span>
+                                    </div>
+                                    <div class="irregular-row">
+                                        <span class="positive">little</span>
+                                        <span class="comparative">less</span>
+                                        <span class="superlative">the least</span>
+                                    </div>
+                                    <div class="irregular-row">
+                                        <span class="positive">much/many</span>
+                                        <span class="comparative">more</span>
+                                        <span class="superlative">the most</span>
+                                    </div>
+                                </div>
+
+                                <div class="usage-examples">
+                                    <h4><i class="fas fa-comments"></i> Ejemplos en Contexto</h4>
+                                    <div class="context-examples">
+                                        <div class="context-item">
+                                            <i class="fas fa-thumbs-up"></i>
+                                            <p>This pizza is <strong>good</strong>, but that one is <strong>better</strong>. However, my mom's pizza is <strong>the best</strong>!</p>
+                                        </div>
+                                        <div class="context-item">
+                                            <i class="fas fa-thumbs-down"></i>
+                                            <p>Today was <strong>bad</strong>, yesterday was <strong>worse</strong>, but Monday was <strong>the worst</strong> day ever!</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="theory-navigation">
+                                <button class="btn btn--outline" onclick="prevTheorySection()">
+                                    <i class="fas fa-arrow-left"></i> Anterior
+                                </button>
+                                <button class="btn btn--primary" onclick="showMainMenu(); addPoints(25, '¡Teoría completada perfectamente!');">
+                                    <i class="fas fa-graduation-cap"></i> ¡Listo para Practicar! (+25 puntos)
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Short Adjectives Exercise -->
+        <div id="short-adjectives" class="screen">
+            <div class="card">
+                <div class="card__body">
+                    <div class="exercise-header">
+                        <button class="btn btn--outline btn--sm" onclick="showMainMenu()">
+                            <i class="fas fa-arrow-left"></i> Volver al Menú
+                        </button>
+                        <div class="progress-section">
+                            <div class="progress-info">
+                                <span id="short-progress"><i class="fas fa-text-height"></i> Ejercicio 1 de 15</span>
+                                <div class="progress-bar">
+                                    <div id="short-progress-fill" class="progress-fill"></div>
+                                </div>
+                            </div>
+                            <div class="score-section">
+                                <div class="current-score">
+                                    <i class="fas fa-star"></i>
+                                    <span id="short-score">0</span>
+                                </div>
+                                <div class="accuracy-display">
+                                    <i class="fas fa-bullseye"></i>
+                                    <span id="short-accuracy">100%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="short-container">
+                        <div class="exercise-instructions">
+                            <i class="fas fa-info-circle"></i>
+                            <p><strong>Instrucciones:</strong> Completa las oraciones con la forma correcta del adjetivo (comparativo o superlativo).</p>
+                        </div>
+
+                        <div class="adjective-card">
+                            <div class="exercise-number">
+                                <span id="current-short-num">1</span>
+                            </div>
+                            
+                            <div class="adjective-content">
+                                <div class="base-adjective">
+                                    <span>Adjetivo base: </span>
+                                    <strong id="base-adjective">tall</strong>
+                                </div>
+                                
+                                <div class="sentence-to-complete">
+                                    <p id="short-sentence">
+                                        <!-- Sentence will be populated by JavaScript -->
+                                    </p>
+                                </div>
+                                
+                                <div class="answer-input-section">
+                                    <input type="text" id="short-answer-input" placeholder="Escribe tu respuesta aquí..." autocomplete="off">
+                                    <button class="check-btn" onclick="checkShortAnswer()" id="short-check-btn">
+                                        <i class="fas fa-check"></i> Verificar
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="help-section">
+                                <button class="help-btn" onclick="showShortHint()" id="short-hint-btn">
+                                    <i class="fas fa-lightbulb"></i> Pista
+                                </button>
+                                <button class="help-btn" onclick="showShortTranslation()" id="short-translate-btn">
+                                    <i class="fas fa-language"></i> Traducción
+                                </button>
+                            </div>
+                        </div>
+
+                        <div id="short-feedback" class="feedback-section hidden">
+                            <!-- Feedback will be shown here -->
+                        </div>
+
+                        <div id="short-hint" class="hint-section hidden">
+                            <div class="hint-content">
+                                <i class="fas fa-lightbulb"></i>
+                                <p id="short-hint-text">Pista aparecerá aquí</p>
+                            </div>
+                        </div>
+
+                        <div id="short-translation" class="translation-section hidden">
+                            <div class="translation-content">
+                                <i class="fas fa-language"></i>
+                                <p id="short-translation-text">Traducción aparecerá aquí</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="short-results" class="results hidden">
+                        <div class="results-celebration">
+                            <i class="fas fa-trophy celebration-icon"></i>
+                            <h2>¡Adjetivos Cortos Dominados!</h2>
+                        </div>
+                        
+                        <div class="results-summary">
+                            <div class="summary-card">
+                                <i class="fas fa-check-circle"></i>
+                                <div class="summary-info">
+                                    <span class="summary-number" id="short-correct">0</span>
+                                    <span class="summary-label">Respuestas Correctas</span>
+                                </div>
+                            </div>
+                            <div class="summary-card">
+                                <i class="fas fa-percentage"></i>
+                                <div class="summary-info">
+                                    <span class="summary-number" id="short-final-accuracy">0%</span>
+                                    <span class="summary-label">Precisión Final</span>
+                                </div>
+                            </div>
+                            <div class="summary-card">
+                                <i class="fas fa-coins"></i>
+                                <div class="summary-info">
+                                    <span class="summary-number" id="short-points-earned">0</span>
+                                    <span class="summary-label">Puntos Ganados</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="short-final-message" class="final-message">
+                            <!-- Motivational message will be shown here -->
+                        </div>
+
+                        <div class="result-actions">
+                            <button class="btn btn--primary" onclick="startExercise('short-adjectives')">
+                                <i class="fas fa-redo"></i> Practicar Más
+                            </button>
+                            <button class="btn btn--success" onclick="startExercise('long-adjectives')">
+                                <i class="fas fa-arrow-right"></i> Adjetivos Largos
+                            </button>
+                            <button class="btn btn--outline" onclick="showMainMenu()">
+                                <i class="fas fa-home"></i> Volver al Menú
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="comparatives-superlatives.js"></script>
+</body>
+</html> 

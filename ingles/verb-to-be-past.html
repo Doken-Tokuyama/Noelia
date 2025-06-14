@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verbo TO BE en Pasado - Práctica Completa</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Welcome Screen -->
+        <div id="welcome-screen" class="screen active">
+            <div class="card welcome-card">
+                <div class="card__body">
+                    <div class="welcome-header">
+                        <i class="fas fa-user-check icon-heart"></i>
+                        <h1>¡Domina el Verbo TO BE en Pasado!</h1>
+                        <i class="fas fa-history icon-star"></i>
+                    </div>
+                    <p>Aprende a usar <strong>WAS</strong> y <strong>WERE</strong> correctamente. ¡Es la base fundamental del inglés en pasado! 💪</p>
+                    
+                    <div class="learning-showcase">
+                        <div class="showcase-item">
+                            <div class="verb-example">
+                                <h3><i class="fas fa-user"></i> I/He/She/It</h3>
+                                <div class="verb-form was">WAS</div>
+                                <p class="example-text">I <strong>was</strong> happy yesterday</p>
+                            </div>
+                        </div>
+                        <div class="showcase-item">
+                            <div class="verb-example">
+                                <h3><i class="fas fa-users"></i> You/We/They</h3>
+                                <div class="verb-form were">WERE</div>
+                                <p class="example-text">They <strong>were</strong> at school</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="learning-stats">
+                        <div class="stat-card">
+                            <i class="fas fa-trophy"></i>
+                            <span id="total-points">0</span>
+                            <small>Puntos Ganados</small>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-check-circle"></i>
+                            <span id="exercises-completed">0</span>
+                            <small>Ejercicios Completados</small>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-percentage"></i>
+                            <span id="accuracy-rate">0%</span>
+                            <small>Precisión Promedio</small>
+                        </div>
+                    </div>
+
+                    <div class="motivation-section">
+                        <div class="daily-motivation">
+                            <i class="fas fa-quote-left"></i>
+                            <p id="daily-quote">¡Cada oración correcta te acerca más a la fluidez! Tú puedes hacerlo.</p>
+                            <i class="fas fa-quote-right"></i>
+                        </div>
+                    </div>
+
+                    <div class="exercise-preview">
+                        <h3><i class="fas fa-list-check"></i> Lo que vas a practicar:</h3>
+                        <div class="preview-list">
+                            <div class="preview-item">
+                                <i class="fas fa-lightbulb"></i>
+                                <span><strong>Teoría Clara:</strong> Cuándo usar was vs were</span>
+                            </div>
+                            <div class="preview-item">
+                                <i class="fas fa-edit"></i>
+                                <span><strong>Completar Oraciones:</strong> 25 ejercicios prácticos</span>
+                            </div>
+                            <div class="preview-item">
+                                <i class="fas fa="question-circle"></i>
+                                <span><strong>Preguntas y Negativas:</strong> Formas completas</span>
+                            </div>
+                            <div class="preview-item">
+                                <i class="fas fa-comments"></i>
+                                <span><strong>Conversaciones:</strong> Situaciones reales</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="btn btn--primary btn--lg pulse-animation" onclick="showMainMenu()">
+                            <i class="fas fa-play"></i> ¡Empezar a Practicar!
+                        </button>
+                        <button class="btn btn--outline btn--lg" onclick="goToMainApp()">
+                            <i class="fas fa-arrow-left"></i> Volver al Menú Principal
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Menu -->
+        <div id="main-menu" class="screen">
+            <div class="card">
+                <div class="card__body">
+                    <h1><i class="fas fa-graduation-cap"></i> Elige tu Ejercicio</h1>
+                    
+                    <div class="points-dashboard">
+                        <div class="dashboard-item">
+                            <div class="points-circle">
+                                <i class="fas fa-gem"></i>
+                                <span id="menu-points">0</span>
+                            </div>
+                            <p>Puntos Totales</p>
+                        </div>
+                        <div class="dashboard-item">
+                            <div class="level-display">
+                                <i class="fas fa-medal"></i>
+                                <span id="current-level">Principiante</span>
+                            </div>
+                            <p>Nivel Actual</p>
+                        </div>
+                        <div class="dashboard-item">
+                            <div class="streak-display">
+                                <i class="fas fa-fire"></i>
+                                <span id="current-streak">0</span>
+                            </div>
+                            <p>Racha Actual</p>
+                        </div>
+                    </div>
+
+                    <div class="exercise-grid">
+                        <div class="exercise-card" onclick="startExercise('theory')">
+                            <div class="difficulty-badge beginner">Básico</div>
+                            <i class="fas fa-book-open exercise-icon"></i>
+                            <h3>Teoría del TO BE</h3>
+                            <p>Aprende las reglas básicas de was/were paso a paso</p>
+                            <div class="status status--info">
+                                <i class="fas fa-clock"></i> 8 minutos
+                            </div>
+                            <div class="points-reward">+50 puntos</div>
+                        </div>
+
+                        <div class="exercise-card" onclick="startExercise('complete-sentences')">
+                            <div class="difficulty-badge beginner">Básico</div>
+                            <i class="fas fa-pen-to-square exercise-icon"></i>
+                            <h3>Completar Oraciones</h3>
+                            <p>Completa oraciones con was o were según corresponda</p>
+                            <div class="status status--info">
+                                <i class="fas fa-list"></i> 25 Oraciones
+                            </div>
+                            <div class="points-reward">+10 puntos por oración</div>
+                        </div>
+
+                        <div class="exercise-card" onclick="startExercise('negative-questions')">
+                            <div class="difficulty-badge intermediate">Intermedio</div>
+                            <i class="fas fa-question exercise-icon"></i>
+                            <h3>Negativas y Preguntas</h3>
+                            <p>Practica wasn't, weren't y preguntas con was/were</p>
+                            <div class="status status--warning">
+                                <i class="fas fa-exclamation"></i> 20 Ejercicios
+                            </div>
+                            <div class="points-reward">+15 puntos por ejercicio</div>
+                        </div>
+
+                        <div class="exercise-card" onclick="startExercise('conversations')">
+                            <div class="difficulty-badge intermediate">Intermedio</div>
+                            <i class="fas fa-comments exercise-icon"></i>
+                            <h3>Conversaciones</h3>
+                            <p>Completa diálogos reales usando was/were</p>
+                            <div class="status status--warning">
+                                <i class="fas fa-users"></i> 8 Diálogos
+                            </div>
+                            <div class="points-reward">+20 puntos por diálogo</div>
+                        </div>
+
+                        <div class="exercise-card" onclick="startExercise('mixed-practice')">
+                            <div class="difficulty-badge advanced">Avanzado</div>
+                            <i class="fas fa-shuffle exercise-icon"></i>
+                            <h3>Práctica Mixta</h3>
+                            <p>Combina todos los usos del verbo TO BE en pasado</p>
+                            <div class="status status--error">
+                                <i class="fas fa-brain"></i> 30 Preguntas
+                            </div>
+                            <div class="points-reward">+25 puntos por pregunta</div>
+                        </div>
+
+                        <div class="exercise-card challenge" onclick="startExercise('master-challenge')">
+                            <div class="difficulty-badge expert">Experto</div>
+                            <i class="fas fa-crown exercise-icon"></i>
+                            <h3>Desafío Maestro</h3>
+                            <p>La prueba definitiva del verbo TO BE en pasado</p>
+                            <div class="status status--error">
+                                <i class="fas fa-trophy"></i> 40 Preguntas
+                            </div>
+                            <div class="points-reward">+1000 puntos bonus</div>
+                        </div>
+                    </div>
+
+                    <div class="helpful-tips">
+                        <h3><i class="fas fa-lightbulb"></i> Recordatorios Útiles</h3>
+                        <div class="tips-container">
+                            <div class="tip-bubble">
+                                <i class="fas fa-user"></i>
+                                <p><strong>WAS:</strong> I, He, She, It</p>
+                            </div>
+                            <div class="tip-bubble">
+                                <i class="fas fa-users"></i>
+                                <p><strong>WERE:</strong> You, We, They</p>
+                            </div>
+                            <div class="tip-bubble">
+                                <i class="fas fa-times"></i>
+                                <p><strong>Negativo:</strong> wasn't / weren't</p>
+                            </div>
+                            <div class="tip-bubble">
+                                <i class="fas fa-question"></i>
+                                <p><strong>Pregunta:</strong> Was/Were + sujeto?</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Complete Sentences Exercise -->
+        <div id="complete-sentences" class="screen">
+            <div class="card">
+                <div class="card__body">
+                    <div class="exercise-header">
+                        <button class="btn btn--outline btn--sm" onclick="showMainMenu()">
+                            <i class="fas fa-arrow-left"></i> Volver al Menú
+                        </button>
+                        <div class="progress-section">
+                            <div class="progress-info">
+                                <span id="sentence-progress"><i class="fas fa-pen-to-square"></i> Oración 1 de 25</span>
+                                <div class="progress-bar">
+                                    <div id="sentence-progress-fill" class="progress-fill"></div>
+                                </div>
+                            </div>
+                            <div class="score-section">
+                                <div class="current-score">
+                                    <i class="fas fa-star"></i>
+                                    <span id="sentence-score">0</span>
+                                </div>
+                                <div class="accuracy-display">
+                                    <i class="fas fa-bullseye"></i>
+                                    <span id="sentence-accuracy">100%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="sentence-container">
+                        <div class="exercise-instructions">
+                            <i class="fas fa-info-circle"></i>
+                            <p><strong>Instrucciones:</strong> Completa cada oración con <strong>was</strong> o <strong>were</strong> según corresponda.</p>
+                        </div>
+
+                        <div class="sentence-card">
+                            <div class="sentence-number">
+                                <span id="current-sentence-num">1</span>
+                            </div>
+                            
+                            <div class="sentence-content">
+                                <p class="sentence-text" id="sentence-text">
+                                    <!-- Sentence will be populated by JavaScript -->
+                                </p>
+                                
+                                <div class="answer-options">
+                                    <button class="option-btn" onclick="selectAnswer('was')" id="was-btn">
+                                        <span class="option-letter">A</span>
+                                        <span class="option-text">was</span>
+                                    </button>
+                                    <button class="option-btn" onclick="selectAnswer('were')" id="were-btn">
+                                        <span class="option-letter">B</span>
+                                        <span class="option-text">were</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="sentence-help">
+                                <button class="help-btn" onclick="showGrammarHint()" id="hint-btn">
+                                    <i class="fas fa-question-circle"></i> Pista Gramatical
+                                </button>
+                                <button class="help-btn" onclick="showTranslation()" id="translate-btn">
+                                    <i class="fas fa-language"></i> Ver Traducción
+                                </button>
+                            </div>
+                        </div>
+
+                        <div id="sentence-feedback" class="feedback-section hidden">
+                            <!-- Feedback will be shown here -->
+                        </div>
+
+                        <div id="grammar-hint" class="hint-section hidden">
+                            <div class="hint-content">
+                                <i class="fas fa-lightbulb"></i>
+                                <p id="hint-text">Pista gramatical aparecerá aquí</p>
+                            </div>
+                        </div>
+
+                        <div id="translation-help" class="translation-section hidden">
+                            <div class="translation-content">
+                                <i class="fas fa-language"></i>
+                                <p id="translation-text">Traducción aparecerá aquí</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="sentence-results" class="results hidden">
+                        <div class="results-celebration">
+                            <i class="fas fa-trophy celebration-icon"></i>
+                            <h2>¡Ejercicio Completado!</h2>
+                        </div>
+                        
+                        <div class="results-summary">
+                            <div class="summary-card">
+                                <i class="fas fa-check-circle"></i>
+                                <div class="summary-info">
+                                    <span class="summary-number" id="correct-answers">0</span>
+                                    <span class="summary-label">Respuestas Correctas</span>
+                                </div>
+                            </div>
+                            <div class="summary-card">
+                                <i class="fas fa-percentage"></i>
+                                <div class="summary-info">
+                                    <span class="summary-number" id="final-accuracy">0%</span>
+                                    <span class="summary-label">Precisión Final</span>
+                                </div>
+                            </div>
+                            <div class="summary-card">
+                                <i class="fas fa-coins"></i>
+                                <div class="summary-info">
+                                    <span class="summary-number" id="points-earned">0</span>
+                                    <span class="summary-label">Puntos Ganados</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="final-message" class="final-message">
+                            <!-- Motivational message will be shown here -->
+                        </div>
+
+                        <div class="result-actions">
+                            <button class="btn btn--primary" onclick="startExercise('complete-sentences')">
+                                <i class="fas fa-redo"></i> Practicar Más
+                            </button>
+                            <button class="btn btn--success" onclick="startExercise('negative-questions')">
+                                <i class="fas fa-arrow-right"></i> Siguiente Nivel
+                            </button>
+                            <button class="btn btn--outline" onclick="showMainMenu()">
+                                <i class="fas fa-home"></i> Volver al Menú
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Theory Section -->
+        <div id="theory" class="screen">
+            <div class="card">
+                <div class="card__body">
+                    <div class="exercise-header">
+                        <button class="btn btn--outline btn--sm" onclick="showMainMenu()">
+                            <i class="fas fa-arrow-left"></i> Volver al Menú
+                        </button>
+                        <div class="progress-info">
+                            <span><i class="fas fa-book-open"></i> Teoría del Verbo TO BE</span>
+                            <div class="points-mini">
+                                <i class="fas fa-gem"></i> <span id="theory-points">0</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="theory-content">
+                        <div class="theory-section active" id="theory-1">
+                            <h2><i class="fas fa-star"></i> El Verbo TO BE en Pasado</h2>
+                            <div class="theory-card">
+                                <p>El verbo <strong>TO BE</strong> en pasado tiene dos formas: <strong>WAS</strong> y <strong>WERE</strong></p>
+                                
+                                <div class="conjugation-table">
+                                    <div class="conjugation-row header">
+                                        <div class="pronoun-col">Pronombre</div>
+                                        <div class="verb-col">Verbo TO BE</div>
+                                        <div class="example-col">Ejemplo</div>
+                                    </div>
+                                    <div class="conjugation-row">
+                                        <div class="pronoun-col">I</div>
+                                        <div class="verb-col was">was</div>
+                                        <div class="example-col">I was happy</div>
+                                    </div>
+                                    <div class="conjugation-row">
+                                        <div class="pronoun-col">You</div>
+                                        <div class="verb-col were">were</div>
+                                        <div class="example-col">You were tired</div>
+                                    </div>
+                                    <div class="conjugation-row">
+                                        <div class="pronoun-col">He/She/It</div>
+                                        <div class="verb-col was">was</div>
+                                        <div class="example-col">She was beautiful</div>
+                                    </div>
+                                    <div class="conjugation-row">
+                                        <div class="pronoun-col">We</div>
+                                        <div class="verb-col were">were</div>
+                                        <div class="example-col">We were students</div>
+                                    </div>
+                                    <div class="conjugation-row">
+                                        <div class="pronoun-col">They</div>
+                                        <div class="verb-col were">were</div>
+                                        <div class="example-col">They were friends</div>
+                                    </div>
+                                </div>
+
+                                <div class="memory-tip">
+                                    <i class="fas fa-brain"></i>
+                                    <p><strong>Truco para recordar:</strong> WAS para singular (I, he, she, it) y WERE para plural (you, we, they)</p>
+                                </div>
+                            </div>
+                            <button class="btn btn--primary" onclick="nextTheorySection(); addPoints(15, '¡Teoría básica aprendida!');">
+                                <i class="fas fa-arrow-right"></i> Siguiente (+15 puntos)
+                            </button>
+                        </div>
+
+                        <div class="theory-section" id="theory-2">
+                            <h2><i class="fas fa-times-circle"></i> Formas Negativas</h2>
+                            <div class="theory-card">
+                                <p>Para hacer negativo, añadimos <strong>NOT</strong> después del verbo:</p>
+                                
+                                <div class="negative-examples">
+                                    <div class="negative-form">
+                                        <h4><i class="fas fa-user"></i> WAS NOT = WASN'T</h4>
+                                        <div class="examples-list">
+                                            <span>I <strong>wasn't</strong> at home yesterday.</span>
+                                            <span>He <strong>wasn't</strong> happy with the result.</span>
+                                            <span>It <strong>wasn't</strong> a good day.</span>
+                                        </div>
+                                    </div>
+                                    <div class="negative-form">
+                                        <h4><i class="fas fa-users"></i> WERE NOT = WEREN'T</h4>
+                                        <div class="examples-list">
+                                            <span>You <strong>weren't</strong> ready for the test.</span>
+                                            <span>We <strong>weren't</strong> invited to the party.</span>
+                                            <span>They <strong>weren't</strong> interested in the movie.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="theory-navigation">
+                                <button class="btn btn--outline" onclick="prevTheorySection()">
+                                    <i class="fas fa-arrow-left"></i> Anterior
+                                </button>
+                                <button class="btn btn--primary" onclick="nextTheorySection(); addPoints(15, '¡Negativas dominadas!');">
+                                    <i class="fas fa-arrow-right"></i> Siguiente (+15 puntos)
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="theory-section" id="theory-3">
+                            <h2><i class="fas fa-question"></i> Preguntas</h2>
+                            <div class="theory-card">
+                                <p>Para hacer preguntas, ponemos el verbo <strong>antes</strong> del sujeto:</p>
+                                
+                                <div class="question-patterns">
+                                    <div class="question-type">
+                                        <h4><i class="fas fa-question-circle"></i> Preguntas con WAS</h4>
+                                        <div class="pattern-box">
+                                            <span class="pattern"><strong>Was</strong> + I/he/she/it + ...?</span>
+                                        </div>
+                                        <div class="examples-list">
+                                            <span><strong>Was</strong> I late for the meeting?</span>
+                                            <span><strong>Was</strong> she your teacher?</span>
+                                            <span><strong>Was</strong> it difficult?</span>
+                                        </div>
+                                    </div>
+                                    <div class="question-type">
+                                        <h4><i class="fas fa-question-circle"></i> Preguntas con WERE</h4>
+                                        <div class="pattern-box">
+                                            <span class="pattern"><strong>Were</strong> + you/we/they + ...?</span>
+                                        </div>
+                                        <div class="examples-list">
+                                            <span><strong>Were</strong> you at the concert?</span>
+                                            <span><strong>Were</strong> we invited?</span>
+                                            <span><strong>Were</strong> they happy?</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="answer-patterns">
+                                    <h4><i class="fas fa-comments"></i> Respuestas Cortas</h4>
+                                    <div class="answers-grid">
+                                        <div class="answer-group positive">
+                                            <h5>Positivas</h5>
+                                            <span>Yes, I was.</span>
+                                            <span>Yes, you were.</span>
+                                            <span>Yes, he/she/it was.</span>
+                                            <span>Yes, we/they were.</span>
+                                        </div>
+                                        <div class="answer-group negative">
+                                            <h5>Negativas</h5>
+                                            <span>No, I wasn't.</span>
+                                            <span>No, you weren't.</span>
+                                            <span>No, he/she/it wasn't.</span>
+                                            <span>No, we/they weren't.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="theory-navigation">
+                                <button class="btn btn--outline" onclick="prevTheorySection()">
+                                    <i class="fas fa-arrow-left"></i> Anterior
+                                </button>
+                                <button class="btn btn--primary" onclick="showMainMenu(); addPoints(20, '¡Teoría completada!');">
+                                    <i class="fas fa-home"></i> ¡Listo para Practicar! (+20 puntos)
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="verb-to-be-past.js"></script>
+</body>
+</html> 

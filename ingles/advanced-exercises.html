@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios Avanzados - Past Simple</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Welcome Screen -->
+        <div id="welcome-screen" class="screen active">
+            <div class="card welcome-card">
+                <div class="card__body">
+                    <div class="welcome-header">
+                        <i class="fas fa-rocket icon-heart"></i>
+                        <h1>¡Ejercicios Avanzados del Past Simple!</h1>
+                        <i class="fas fa-star icon-star"></i>
+                    </div>
+                    <p>¡Desafíate con ejercicios más complejos! Textos completos, historias reales y situaciones avanzadas te esperan. 🚀</p>
+                    
+                    <div class="achievement-showcase">
+                        <div class="achievement-card">
+                            <i class="fas fa-trophy"></i>
+                            <div class="achievement-info">
+                                <h4>Puntuación Total</h4>
+                                <span id="total-score">0</span>
+                                <small>puntos acumulados</small>
+                            </div>
+                        </div>
+                        <div class="achievement-card">
+                            <i class="fas fa-medal"></i>
+                            <div class="achievement-info">
+                                <h4>Nivel Actual</h4>
+                                <span id="current-level">Principiante</span>
+                                <small>sigue practicando</small>
+                            </div>
+                        </div>
+                        <div class="achievement-card">
+                            <i class="fas fa-fire"></i>
+                            <div class="achievement-info">
+                                <h4>Racha Perfecta</h4>
+                                <span id="perfect-streak">0</span>
+                                <small>respuestas seguidas</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="motivation-message">
+                        <div class="daily-quote">
+                            <i class="fas fa-quote-left"></i>
+                            <p id="daily-quote">¡Cada error es un paso más cerca del éxito! Nunca te rindas.</p>
+                            <i class="fas fa-quote-right"></i>
+                        </div>
+                    </div>
+
+                    <div class="challenge-preview">
+                        <h3><i class="fas fa-lightning-bolt"></i> Desafíos que te esperan:</h3>
+                        <div class="challenge-grid">
+                            <div class="challenge-item">
+                                <i class="fas fa-book-open"></i>
+                                <h4>Textos Completos</h4>
+                                <p>Lee historias y corrige verbos</p>
+                            </div>
+                            <div class="challenge-item">
+                                <i class="fas fa-microphone"></i>
+                                <h4>Conversaciones</h4>
+                                <p>Completa diálogos reales</p>
+                            </div>
+                            <div class="challenge-item">
+                                <i class="fas fa-brain"></i>
+                                <h4>Análisis de Errores</h4>
+                                <p>Encuentra y corrige mistakes</p>
+                            </div>
+                            <div class="challenge-item">
+                                <i class="fas fa-writing"></i>
+                                <h4>Escritura Creativa</h4>
+                                <p>Crea tus propias historias</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="btn btn--primary btn--lg pulse-animation" onclick="showMainMenu()">
+                            <i class="fas fa-rocket"></i> ¡Comenzar Desafíos!
+                        </button>
+                        <button class="btn btn--outline btn--lg" onclick="goToMainApp()">
+                            <i class="fas fa-arrow-left"></i> Volver al Menú Principal
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Menu -->
+        <div id="main-menu" class="screen">
+            <div class="card">
+                <div class="card__body">
+                    <h1><i class="fas fa-graduation-cap"></i> Elige tu Desafío</h1>
+                    
+                    <div class="user-dashboard">
+                        <div class="dashboard-card">
+                            <div class="score-display">
+                                <div class="score-ring">
+                                    <i class="fas fa-gem"></i>
+                                    <span id="menu-score">0</span>
+                                </div>
+                                <p>Puntos Totales</p>
+                            </div>
+                        </div>
+                        <div class="dashboard-card">
+                            <div class="level-badge" id="level-badge">
+                                <i class="fas fa-star"></i>
+                                <span id="menu-level">Principiante</span>
+                            </div>
+                            <p>Tu Nivel</p>
+                        </div>
+                        <div class="dashboard-card">
+                            <div class="streak-display">
+                                <i class="fas fa-fire"></i>
+                                <span id="menu-streak">0</span>
+                            </div>
+                            <p>Racha Actual</p>
+                        </div>
+                    </div>
+
+                    <div class="exercises-advanced-grid">
+                        <div class="exercise-advanced-card" onclick="startExercise('story-completion')">
+                            <div class="difficulty-indicator expert">
+                                <i class="fas fa-star"></i>
+                                <span>Experto</span>
+                            </div>
+                            <div class="exercise-icon-wrapper">
+                                <i class="fas fa-book-open exercise-icon"></i>
+                            </div>
+                            <h3>Historias Completas</h3>
+                            <p>Lee historias fascinantes y completa con verbos en past simple</p>
+                            <div class="exercise-stats">
+                                <div class="stat">
+                                    <i class="fas fa-file-alt"></i>
+                                    <span>5 Historias</span>
+                                </div>
+                                <div class="stat">
+                                    <i class="fas fa-clock"></i>
+                                    <span>15-20 min</span>
+                                </div>
+                            </div>
+                            <div class="points-potential">
+                                <i class="fas fa-coins"></i>
+                                <span>Hasta 250 puntos</span>
+                            </div>
+                        </div>
+
+                        <div class="exercise-advanced-card" onclick="startExercise('dialogue-practice')">
+                            <div class="difficulty-indicator advanced">
+                                <i class="fas fa-star"></i>
+                                <span>Avanzado</span>
+                            </div>
+                            <div class="exercise-icon-wrapper">
+                                <i class="fas fa-comments exercise-icon"></i>
+                            </div>
+                            <h3>Diálogos Reales</h3>
+                            <p>Completa conversaciones del día a día usando past simple</p>
+                            <div class="exercise-stats">
+                                <div class="stat">
+                                    <i class="fas fa-users"></i>
+                                    <span>8 Diálogos</span>
+                                </div>
+                                <div class="stat">
+                                    <i class="fas fa-volume-up"></i>
+                                    <span>Con audio</span>
+                                </div>
+                            </div>
+                            <div class="points-potential">
+                                <i class="fas fa-coins"></i>
+                                <span>Hasta 200 puntos</span>
+                            </div>
+                        </div>
+
+                        <div class="exercise-advanced-card" onclick="startExercise('error-detection')">
+                            <div class="difficulty-indicator expert">
+                                <i class="fas fa-star"></i>
+                                <span>Experto</span>
+                            </div>
+                            <div class="exercise-icon-wrapper">
+                                <i class="fas fa-search exercise-icon"></i>
+                            </div>
+                            <h3>Detective de Errores</h3>
+                            <p>Encuentra y corrige errores en textos con past simple</p>
+                            <div class="exercise-stats">
+                                <div class="stat">
+                                    <i class="fas fa-bug"></i>
+                                    <span>20 Errores</span>
+                                </div>
+                                <div class="stat">
+                                    <i class="fas fa-magnifying-glass"></i>
+                                    <span>Análisis profundo</span>
+                                </div>
+                            </div>
+                            <div class="points-potential">
+                                <i class="fas fa-coins"></i>
+                                <span>Hasta 300 puntos</span>
+                            </div>
+                        </div>
+
+                        <div class="exercise-advanced-card" onclick="startExercise('writing-challenge')">
+                            <div class="difficulty-indicator master">
+                                <i class="fas fa-crown"></i>
+                                <span>Maestro</span>
+                            </div>
+                            <div class="exercise-icon-wrapper">
+                                <i class="fas fa-pen-fancy exercise-icon"></i>
+                            </div>
+                            <h3>Escritura Creativa</h3>
+                            <p>Escribe tus propias historias usando past simple correctamente</p>
+                            <div class="exercise-stats">
+                                <div class="stat">
+                                    <i class="fas fa-feather"></i>
+                                    <span>Creatividad</span>
+                                </div>
+                                <div class="stat">
+                                    <i class="fas fa-check-double"></i>
+                                    <span>Revisión IA</span>
+                                </div>
+                            </div>
+                            <div class="points-potential">
+                                <i class="fas fa-coins"></i>
+                                <span>Hasta 500 puntos</span>
+                            </div>
+                        </div>
+
+                        <div class="exercise-advanced-card special-challenge" onclick="startExercise('ultimate-challenge')">
+                            <div class="difficulty-indicator ultimate">
+                                <i class="fas fa-trophy"></i>
+                                <span>Definitivo</span>
+                            </div>
+                            <div class="exercise-icon-wrapper">
+                                <i class="fas fa-crown exercise-icon"></i>
+                            </div>
+                            <h3>Desafío Definitivo</h3>
+                            <p>La prueba final: combina todo lo aprendido en un mega-desafío</p>
+                            <div class="exercise-stats">
+                                <div class="stat">
+                                    <i class="fas fa-fire"></i>
+                                    <span>50 Preguntas</span>
+                                </div>
+                                <div class="stat">
+                                    <i class="fas fa-stopwatch"></i>
+                                    <span>Contra reloj</span>
+                                </div>
+                            </div>
+                            <div class="points-potential">
+                                <i class="fas fa-diamond"></i>
+                                <span>Hasta 1000 puntos</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tips-section">
+                        <h3><i class="fas fa-lightbulb"></i> Consejos para el Éxito</h3>
+                        <div class="tips-carousel">
+                            <div class="tip-card active">
+                                <i class="fas fa-heart"></i>
+                                <p>Mantén una actitud positiva. Los errores son oportunidades de aprender.</p>
+                            </div>
+                            <div class="tip-card">
+                                <i class="fas fa-clock"></i>
+                                <p>Tómate tu tiempo. La calidad es más importante que la velocidad.</p>
+                            </div>
+                            <div class="tip-card">
+                                <i class="fas fa-repeat"></i>
+                                <p>Practica regularmente. 15 minutos diarios son mejor que 2 horas una vez a la semana.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Story Completion Exercise -->
+        <div id="story-completion" class="screen">
+            <div class="card">
+                <div class="card__body">
+                    <div class="exercise-header">
+                        <button class="btn btn--outline btn--sm" onclick="showMainMenu()">
+                            <i class="fas fa-arrow-left"></i> Volver al Menú
+                        </button>
+                        <div class="progress-section">
+                            <div class="progress-info">
+                                <span id="story-progress"><i class="fas fa-book"></i> Historia 1 de 5</span>
+                                <div class="progress-bar">
+                                    <div id="story-progress-fill" class="progress-fill"></div>
+                                </div>
+                            </div>
+                            <div class="score-tracker">
+                                <div class="current-score">
+                                    <i class="fas fa-star"></i>
+                                    <span id="story-current-score">0</span>
+                                </div>
+                                <div class="accuracy-meter">
+                                    <span>Precisión: </span>
+                                    <span id="story-accuracy">100%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="story-container">
+                        <div class="story-header">
+                            <h2 id="story-title">Título de la Historia</h2>
+                            <div class="story-difficulty">
+                                <i class="fas fa-signal"></i>
+                                <span id="story-difficulty-text">Dificultad: Intermedio</span>
+                            </div>
+                        </div>
+
+                        <div class="story-content">
+                            <div class="story-instructions">
+                                <i class="fas fa-info-circle"></i>
+                                <p>Lee la historia y completa los espacios en blanco con la forma correcta del verbo en paréntesis usando Past Simple.</p>
+                            </div>
+                            
+                            <div class="story-text" id="story-text">
+                                <!-- Story content will be populated by JavaScript -->
+                            </div>
+                        </div>
+
+                        <div class="story-actions">
+                            <button class="btn btn--outline" onclick="showStoryHint()" id="hint-btn">
+                                <i class="fas fa-lightbulb"></i> Pista
+                            </button>
+                            <button class="btn btn--warning" onclick="checkCurrentStory()" id="check-btn">
+                                <i class="fas fa-check"></i> Verificar Respuestas
+                            </button>
+                            <button class="btn btn--primary hidden" onclick="nextStory()" id="next-btn">
+                                <i class="fas fa-arrow-right"></i> Siguiente Historia
+                            </button>
+                        </div>
+
+                        <div id="story-feedback" class="story-feedback hidden">
+                            <!-- Feedback will be shown here -->
+                        </div>
+                    </div>
+
+                    <div id="story-results" class="results hidden">
+                        <div class="celebration-animation">
+                            <i class="fas fa-trophy trophy-spin"></i>
+                            <h2>¡Historias Completadas!</h2>
+                        </div>
+                        <div class="final-score-display">
+                            <div class="score-breakdown">
+                                <div class="score-item">
+                                    <i class="fas fa-bullseye"></i>
+                                    <div class="score-details">
+                                        <span class="score-number" id="final-correct">0</span>
+                                        <span class="score-label">Respuestas Correctas</span>
+                                    </div>
+                                </div>
+                                <div class="score-item">
+                                    <i class="fas fa-percentage"></i>
+                                    <div class="score-details">
+                                        <span class="score-number" id="final-accuracy">0%</span>
+                                        <span class="score-label">Precisión Final</span>
+                                    </div>
+                                </div>
+                                <div class="score-item">
+                                    <i class="fas fa-coins"></i>
+                                    <div class="score-details">
+                                        <span class="score-number" id="final-points">0</span>
+                                        <span class="score-label">Puntos Ganados</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="story-final-message" class="final-message">
+                            <!-- Final motivational message -->
+                        </div>
+                        <div class="result-actions">
+                            <button class="btn btn--primary" onclick="startExercise('story-completion')">
+                                <i class="fas fa-redo"></i> Practicar Más Historias
+                            </button>
+                            <button class="btn btn--outline" onclick="showMainMenu()">
+                                <i class="fas fa-home"></i> Volver al Menú
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="advanced-exercises.js"></script>
+</body>
+</html> 

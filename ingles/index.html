@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica de Past Simple - Seguro</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Iconos de Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Welcome Screen -->
+        <div id="welcome-screen" class="screen active">
+            <div class="card welcome-card">
+                <div class="card__body">
+                    <div class="welcome-header">
+                        <i class="fas fa-heart icon-heart"></i>
+                        <h1>¡Bienvenido a la Práctica del Past Simple!</h1>
+                        <i class="fas fa-star icon-star"></i>
+                    </div>
+                    <p>Esta aplicación te ayudará a practicar el tiempo Past Simple en inglés. Tienes cinco tipos diferentes de ejercicios:</p>
+                    <ul class="exercise-list">
+                        <li><i class="fas fa-question-circle"></i> <strong>Quiz de Opción Múltiple:</strong> Elige la forma correcta del past simple</li>
+                        <li><i class="fas fa-edit"></i> <strong>Completar Huecos:</strong> Completa oraciones con el verbo correcto</li>
+                        <li><i class="fas fa-arrows-alt"></i> <strong>Arrastrar y Soltar:</strong> Empareja verbos en presente y pasado</li>
+                        <li><i class="fas fa-book"></i> <strong>Teoría Interactiva:</strong> Aprende las reglas paso a paso</li>
+                        <li><i class="fas fa-graduation-cap"></i> <strong>Examen Final:</strong> Demuestra todo lo que has aprendido</li>
+                    </ul>
+                    <div class="rules-section">
+                        <h3><i class="fas fa-lightbulb"></i> Reglas Rápidas del Past Simple:</h3>
+                        <div class="rules-grid">
+                            <div class="rule-card">
+                                <i class="fas fa-plus-circle rule-icon"></i>
+                                <h4>Verbos Regulares</h4>
+                                <p>Añade <strong>-ed</strong></p>
+                                <div class="examples">
+                                    <span>walk → walked</span>
+                                    <span>play → played</span>
+                                </div>
+                            </div>
+                            <div class="rule-card">
+                                <i class="fas fa-star rule-icon"></i>
+                                <h4>Verbos Irregulares</h4>
+                                <p>Formas especiales</p>
+                                <div class="examples">
+                                    <span>go → went</span>
+                                    <span>see → saw</span>
+                                </div>
+                            </div>
+                            <div class="rule-card">
+                                <i class="fas fa-times-circle rule-icon"></i>
+                                <h4>Negativo</h4>
+                                <p><strong>didn't</strong> + verbo base</p>
+                                <div class="examples">
+                                    <span>I didn't go</span>
+                                </div>
+                            </div>
+                            <div class="rule-card">
+                                <i class="fas fa-question rule-icon"></i>
+                                <h4>Preguntas</h4>
+                                <p><strong>Did</strong> + sujeto + verbo base</p>
+                                <div class="examples">
+                                    <span>Did you go?</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn--primary btn--lg" id="start-btn">
+                        <i class="fas fa-play"></i> Comenzar Práctica
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Menu -->
+        <div id="main-menu" class="screen">
+            <div class="card">
+                <div class="card__body">
+                    <h1><i class="fas fa-heart"></i> Elige tu Ejercicio</h1>
+                    <div class="exercise-grid">
+                        <div class="exercise-card" data-exercise="theory">
+                            <i class="fas fa-book exercise-icon"></i>
+                            <h3>Teoría Interactiva</h3>
+                            <p>Aprende las reglas del Past Simple con ejemplos</p>
+                            <div class="status status--info">
+                                <i class="fas fa-clock"></i> 15 min
+                            </div>
+                        </div>
+                        <div class="exercise-card" data-exercise="multiple-choice">
+                            <i class="fas fa-question-circle exercise-icon"></i>
+                            <h3>Quiz Opción Múltiple</h3>
+                            <p>Preguntas sobre formas del past simple</p>
+                            <div class="status status--info">
+                                <i class="fas fa-list"></i> 15 Preguntas
+                            </div>
+                        </div>
+                        <div class="exercise-card" data-exercise="fill-blanks">
+                            <i class="fas fa-edit exercise-icon"></i>
+                            <h3>Completar Huecos</h3>
+                            <p>Completa oraciones con verbos en past simple</p>
+                            <div class="status status--info">
+                                <i class="fas fa-pen"></i> 15 Oraciones
+                            </div>
+                        </div>
+                        <div class="exercise-card" data-exercise="drag-drop">
+                            <i class="fas fa-arrows-alt exercise-icon"></i>
+                            <h3>Arrastrar y Soltar</h3>
+                            <p>Empareja verbos en presente y pasado</p>
+                            <div class="status status--info">
+                                <i class="fas fa-puzzle-piece"></i> 15 Pares
+                            </div>
+                        </div>
+                        <div class="exercise-card" data-action="there-was-were">
+                            <i class="fas fa-map-marker-alt exercise-icon"></i>
+                            <h3>There Was/Were</h3>
+                            <p>Aprende a usar "there was" y "there were"</p>
+                            <div class="status status--info">
+                                <i class="fas fa-book-open"></i> Teoría + Ejercicios
+                            </div>
+                        </div>
+                        <div class="exercise-card" data-action="vocabulary">
+                            <i class="fas fa-book-heart exercise-icon"></i>
+                            <h3>Vocabulario Interactivo</h3>
+                            <p>Amplía tu vocabulario con juegos motivadores</p>
+                            <div class="status status--success">
+                                <i class="fas fa-star"></i> 50+ Palabras
+                            </div>
+                        </div>
+                        <div class="exercise-card" data-action="verb-to-be-past">
+                            <i class="fas fa-user-check exercise-icon"></i>
+                            <h3>Verbo TO BE (Pasado)</h3>
+                            <p>Domina was/were con ejercicios completos</p>
+                            <div class="status status--info">
+                                <i class="fas fa-pen-to-square"></i> 25 Oraciones
+                            </div>
+                        </div>
+                        <div class="exercise-card" data-action="comparatives">
+                            <i class="fas fa-chart-line exercise-icon"></i>
+                            <h3>Comparatives & Superlatives</h3>
+                            <p>Aprende a comparar: good→better→best</p>
+                            <div class="status status--warning">
+                                <i class="fas fa-trophy"></i> Teoría + Práctica
+                            </div>
+                        </div>
+                        <div class="exercise-card" data-exercise="final-exam">
+                            <i class="fas fa-graduation-cap exercise-icon"></i>
+                            <h3>Examen Final</h3>
+                            <p>Prueba completa de todos los conocimientos</p>
+                            <div class="status status--warning">
+                                <i class="fas fa-trophy"></i> 25 Preguntas
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Theory Section -->
+        <div id="theory" class="screen">
+            <div class="card">
+                <div class="card__body">
+                    <div class="exercise-header">
+                        <button class="btn btn--outline btn--sm" id="theory-back-btn">
+                            <i class="fas fa-arrow-left"></i> Volver al Menú
+                        </button>
+                        <div class="progress-info">
+                            <span><i class="fas fa-book"></i> Teoría del Past Simple</span>
+                        </div>
+                    </div>
+                    <div id="theory-content">
+                        <div class="theory-section active" id="theory-1">
+                            <h2><i class="fas fa-star"></i> ¿Qué es el Past Simple?</h2>
+                            <div class="theory-card">
+                                <p>El <strong>Past Simple</strong> es un tiempo verbal que usamos para hablar de acciones que ocurrieron y terminaron en el pasado.</p>
+                                
+                                <div class="video-section">
+                                    <h4><i class="fas fa-play-circle"></i> Recursos Adicionales</h4>
+                                    <p>Para complementar tu aprendizaje, te recomendamos:</p>
+                                    <div class="resource-container">
+                                        <div class="resource-item">
+                                            <i class="fas fa-external-link-alt"></i>
+                                            <div class="resource-content">
+                                                <h5>Video Tutorial</h5>
+                                                <p>Busca "Past Simple English" en YouTube para videos explicativos</p>
+                                            </div>
+                                        </div>
+                                        <div class="resource-item">
+                                            <i class="fas fa-book-open"></i>
+                                            <div class="resource-content">
+                                                <h5>Práctica Extra</h5>
+                                                <p>Completa todos los ejercicios de esta aplicación</p>
+                                            </div>
+                                        </div>
+                                        <div class="resource-item">
+                                            <i class="fas fa-users"></i>
+                                            <div class="resource-content">
+                                                <h5>Practica Hablando</h5>
+                                                <p>Usa el Past Simple en conversaciones reales</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="example-box">
+                                    <h4><i class="fas fa-lightbulb"></i> Ejemplos:</h4>
+                                    <ul>
+                                        <li>I <strong>played</strong> football yesterday. (Jugué fútbol ayer)</li>
+                                        <li>She <strong>went</strong> to the cinema last week. (Ella fue al cine la semana pasada)</li>
+                                        <li>We <strong>studied</strong> English in 2020. (Estudiamos inglés en 2020)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <button class="btn btn--primary" id="theory-next-1">
+                                <i class="fas fa-arrow-right"></i> Siguiente
+                            </button>
+                        </div>
+                        
+                        <div class="theory-section" id="theory-2">
+                            <h2><i class="fas fa-plus-circle"></i> Verbos Regulares</h2>
+                            <div class="theory-card">
+                                <p>Los verbos regulares forman el past simple añadiendo <strong>-ed</strong> al verbo base.</p>
+                                <div class="rules-detailed">
+                                    <div class="rule-detail">
+                                        <h4><i class="fas fa-check"></i> Regla básica: +ed</h4>
+                                        <p>work → work<strong>ed</strong></p>
+                                        <p>help → help<strong>ed</strong></p>
+                                    </div>
+                                    <div class="rule-detail">
+                                        <h4><i class="fas fa-check"></i> Termina en 'e': +d</h4>
+                                        <p>live → live<strong>d</strong></p>
+                                        <p>dance → dance<strong>d</strong></p>
+                                    </div>
+                                    <div class="rule-detail">
+                                        <h4><i class="fas fa-check"></i> Consonante + y: -ied</h4>
+                                        <p>study → stud<strong>ied</strong></p>
+                                        <p>try → tr<strong>ied</strong></p>
+                                    </div>
+                                    <div class="rule-detail">
+                                        <h4><i class="fas fa-check"></i> Doblar consonante: +ed</h4>
+                                        <p>stop → stop<strong>p</strong>ed</p>
+                                        <p>plan → plan<strong>n</strong>ed</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="theory-navigation">
+                                <button class="btn btn--outline" id="theory-prev-2">
+                                    <i class="fas fa-arrow-left"></i> Anterior
+                                </button>
+                                <button class="btn btn--primary" id="theory-next-2">
+                                    <i class="fas fa-arrow-right"></i> Siguiente
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="theory-section" id="theory-3">
+                            <h2><i class="fas fa-star"></i> Verbos Irregulares Importantes</h2>
+                            <div class="theory-card">
+                                <p>Los verbos irregulares tienen formas especiales en past simple que debes memorizar.</p>
+                                <div class="irregular-verbs-grid">
+                                    <div class="verb-group">
+                                        <h4><i class="fas fa-heart"></i> Más Comunes</h4>
+                                        <div class="verb-list">
+                                            <span>be → was/were</span>
+                                            <span>go → went</span>
+                                            <span>have → had</span>
+                                            <span>do → did</span>
+                                            <span>say → said</span>
+                                        </div>
+                                    </div>
+                                    <div class="verb-group">
+                                        <h4><i class="fas fa-star"></i> Muy Frecuentes</h4>
+                                        <div class="verb-list">
+                                            <span>get → got</span>
+                                            <span>make → made</span>
+                                            <span>take → took</span>
+                                            <span>come → came</span>
+                                            <span>see → saw</span>
+                                        </div>
+                                    </div>
+                                    <div class="verb-group">
+                                        <h4><i class="fas fa-book"></i> Útiles</h4>
+                                        <div class="verb-list">
+                                            <span>think → thought</span>
+                                            <span>know → knew</span>
+                                            <span>find → found</span>
+                                            <span>give → gave</span>
+                                            <span>tell → told</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="theory-navigation">
+                                <button class="btn btn--outline" id="theory-prev-3">
+                                    <i class="fas fa-arrow-left"></i> Anterior
+                                </button>
+                                <button class="btn btn--primary" id="theory-next-3">
+                                    <i class="fas fa-arrow-right"></i> Siguiente
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="theory-section" id="theory-4">
+                            <h2><i class="fas fa-times-circle"></i> Negativo y Preguntas</h2>
+                            <div class="theory-card">
+                                <div class="negative-questions-grid">
+                                    <div class="form-explanation">
+                                        <h4><i class="fas fa-times"></i> Forma Negativa</h4>
+                                        <p>Sujeto + <strong>didn't</strong> + verbo base</p>
+                                        <div class="examples">
+                                            <span>I didn't go to school.</span>
+                                            <span>She didn't play tennis.</span>
+                                            <span>We didn't watch TV.</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-explanation">
+                                        <h4><i class="fas fa-question"></i> Preguntas</h4>
+                                        <p><strong>Did</strong> + sujeto + verbo base?</p>
+                                        <div class="examples">
+                                            <span>Did you go to school?</span>
+                                            <span>Did she play tennis?</span>
+                                            <span>Did we watch TV?</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="important-note">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                    <p><strong>¡Importante!</strong> En negativo y preguntas, el verbo principal va en forma base (infinitivo sin 'to').</p>
+                                </div>
+                            </div>
+                            <div class="theory-navigation">
+                                <button class="btn btn--outline" id="theory-prev-4">
+                                    <i class="fas fa-arrow-left"></i> Anterior
+                                </button>
+                                <button class="btn btn--primary" id="theory-home">
+                                    <i class="fas fa-home"></i> Volver al Menú
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Multiple Choice Quiz -->
+        <div id="multiple-choice" class="screen">
+            <div class="card">
+                <div class="card__body">
+                    <div class="exercise-header">
+                        <button class="btn btn--outline btn--sm" id="mc-back-btn">
+                            <i class="fas fa-arrow-left"></i> Volver al Menú
+                        </button>
+                        <div class="progress-info">
+                            <span id="mc-progress"><i class="fas fa-question-circle"></i> Pregunta 1 de 15</span>
+                            <div class="progress-bar">
+                                <div id="mc-progress-fill" class="progress-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="mc-question-container">
+                        <h2 id="mc-question">La pregunta aparecerá aquí</h2>
+                        <div id="mc-options" class="options-grid">
+                            <!-- Options will be populated by JavaScript -->
+                        </div>
+                        <div id="mc-feedback" class="feedback"></div>
+                    </div>
+                    <div id="mc-results" class="results hidden">
+                        <h2><i class="fas fa-trophy"></i> ¡Quiz Completado!</h2>
+                        <div class="score-display">
+                            <div class="score-circle">
+                                <span id="mc-score">0/15</span>
+                                <small id="mc-percentage">0%</small>
+                            </div>
+                        </div>
+                        <div id="mc-message" class="result-message"></div>
+                        <div class="result-actions">
+                            <button class="btn btn--primary" id="mc-retry">
+                                <i class="fas fa-redo"></i> Repetir Quiz
+                            </button>
+                            <button class="btn btn--outline" id="mc-home">
+                                <i class="fas fa-home"></i> Volver al Menú
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fill in the Blanks -->
+        <div id="fill-blanks" class="screen">
+            <div class="card">
+                <div class="card__body">
+                    <div class="exercise-header">
+                        <button class="btn btn--outline btn--sm" id="fill-back-btn">
+                            <i class="fas fa-arrow-left"></i> Volver al Menú
+                        </button>
+                        <div class="progress-info">
+                            <span><i class="fas fa-edit"></i> Completar Huecos</span>
+                        </div>
+                    </div>
+                    <div id="fill-questions">
+                        <!-- Questions will be populated by JavaScript -->
+                    </div>
+                    <div class="exercise-actions">
+                        <button id="check-fill-btn" class="btn btn--primary">
+                            <i class="fas fa-check"></i> Verificar Respuestas
+                        </button>
+                        <button id="reset-fill-btn" class="btn btn--outline hidden">
+                            <i class="fas fa-redo"></i> Reiniciar
+                        </button>
+                    </div>
+                    <div id="fill-results" class="results hidden">
+                        <h2><i class="fas fa-edit"></i> ¡Ejercicio Completado!</h2>
+                        <div class="score-display">
+                            <div class="score-circle">
+                                <span id="fill-score">0/15</span>
+                                <small id="fill-percentage">0%</small>
+                            </div>
+                        </div>
+                        <div id="fill-message" class="result-message"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Drag and Drop -->
+        <div id="drag-drop" class="screen">
+            <div class="card">
+                <div class="card__body">
+                    <div class="exercise-header">
+                        <button class="btn btn--outline btn--sm" id="drag-back-btn">
+                            <i class="fas fa-arrow-left"></i> Volver al Menú
+                        </button>
+                        <div class="progress-info">
+                            <span><i class="fas fa-arrows-alt"></i> Arrastrar y Soltar</span>
+                        </div>
+                    </div>
+                    <div id="drag-container">
+                        <div class="drag-drop-grid">
+                            <div id="present-verbs" class="verb-column">
+                                <!-- Present verbs will be populated by JavaScript -->
+                            </div>
+                            <div id="past-verbs" class="verb-column">
+                                <!-- Past verbs will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="exercise-actions">
+                        <button id="check-drag-btn" class="btn btn--primary">
+                            <i class="fas fa-check"></i> Verificar Respuestas
+                        </button>
+                        <button id="reset-drag-btn" class="btn btn--outline hidden">
+                            <i class="fas fa-redo"></i> Reiniciar
+                        </button>
+                    </div>
+                    <div id="drag-results" class="results hidden">
+                        <h2><i class="fas fa-arrows-alt"></i> ¡Ejercicio Completado!</h2>
+                        <div class="score-display">
+                            <div class="score-circle">
+                                <span id="drag-score">0/15</span>
+                                <small id="drag-percentage">0%</small>
+                            </div>
+                        </div>
+                        <div id="drag-message" class="result-message"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Final Exam -->
+        <div id="final-exam" class="screen">
+            <div class="card">
+                <div class="card__body">
+                    <div class="exercise-header">
+                        <button class="btn btn--outline btn--sm" id="final-back-btn">
+                            <i class="fas fa-arrow-left"></i> Volver al Menú
+                        </button>
+                        <div class="progress-info">
+                            <span id="final-progress"><i class="fas fa-graduation-cap"></i> Pregunta 1 de 25</span>
+                            <div class="progress-bar">
+                                <div id="final-progress-fill" class="progress-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="final-question-container">
+                        <h2 id="final-question">La pregunta aparecerá aquí</h2>
+                        <div id="final-question-content">
+                            <!-- Content will be populated by JavaScript -->
+                        </div>
+                        <div id="final-feedback" class="feedback"></div>
+                    </div>
+                    <div id="final-results" class="results hidden">
+                        <h2><i class="fas fa-graduation-cap"></i> ¡Examen Completado!</h2>
+                        <div class="score-display">
+                            <div class="score-circle">
+                                <span id="final-score">0/25</span>
+                                <small id="final-percentage">0%</small>
+                            </div>
+                        </div>
+                        <div id="final-message" class="result-message"></div>
+                        <div id="certificate" class="certificate-container"></div>
+                        <div class="result-actions">
+                            <button class="btn btn--primary" id="final-retry">
+                                <i class="fas fa-redo"></i> Repetir Examen
+                            </button>
+                            <button class="btn btn--outline" id="final-home">
+                                <i class="fas fa-home"></i> Volver al Menú
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app-safe.js"></script>
+</body>
+</html> 

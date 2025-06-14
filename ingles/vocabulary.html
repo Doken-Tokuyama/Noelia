@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vocabulario del Past Simple - Aprende Inglés</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Welcome Screen -->
+        <div id="welcome-screen" class="screen active">
+            <div class="card welcome-card">
+                <div class="card__body">
+                    <div class="welcome-header">
+                        <i class="fas fa-book-open icon-heart"></i>
+                        <h1>¡Aprende Vocabulario del Past Simple!</h1>
+                        <i class="fas fa-heart icon-star"></i>
+                    </div>
+                    <p>Amplía tu vocabulario y aprende verbos esenciales para dominar el Past Simple. ¡Cada palabra nueva es una victoria! 🌟</p>
+                    
+                    <div class="learning-stats">
+                        <div class="stat-card">
+                            <i class="fas fa-gem"></i>
+                            <span id="total-points">0</span>
+                            <small>Puntos Totales</small>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-book"></i>
+                            <span id="words-learned">0</span>
+                            <small>Palabras Aprendidas</small>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-fire"></i>
+                            <span id="streak-count">0</span>
+                            <small>Racha Diaria</small>
+                        </div>
+                    </div>
+
+                    <div class="vocabulary-preview">
+                        <h3><i class="fas fa-star"></i> ¿Qué vas a aprender?</h3>
+                        <div class="preview-categories">
+                            <div class="category-preview">
+                                <i class="fas fa-running"></i>
+                                <h4>Verbos de Acción</h4>
+                                <p>run → ran, jump → jumped</p>
+                            </div>
+                            <div class="category-preview">
+                                <i class="fas fa-heart"></i>
+                                <h4>Emociones</h4>
+                                <p>love → loved, feel → felt</p>
+                            </div>
+                            <div class="category-preview">
+                                <i class="fas fa-home"></i>
+                                <h4>Vida Diaria</h4>
+                                <p>eat → ate, sleep → slept</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="btn btn--primary btn--lg" onclick="showMainMenu()">
+                            <i class="fas fa-play"></i> ¡Empezar a Aprender!
+                        </button>
+                        <button class="btn btn--outline btn--lg" onclick="goToMainApp()">
+                            <i class="fas fa-arrow-left"></i> Volver al Menú Principal
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Menu -->
+        <div id="main-menu" class="screen">
+            <div class="card">
+                <div class="card__body">
+                    <h1><i class="fas fa-book-heart"></i> Elige tu Método de Estudio</h1>
+                    
+                    <div class="points-display">
+                        <div class="points-badge">
+                            <i class="fas fa-gem"></i>
+                            <span id="current-points">0 puntos</span>
+                        </div>
+                        <div class="daily-goal">
+                            <i class="fas fa-target"></i>
+                            <span>Meta diaria: <span id="daily-progress">0/20</span> palabras</span>
+                        </div>
+                    </div>
+
+                    <div class="exercise-grid">
+                        <div class="exercise-card" onclick="startExercise('word-cards')">
+                            <div class="difficulty-badge beginner">Fácil</div>
+                            <i class="fas fa-id-card exercise-icon"></i>
+                            <h3>Tarjetas de Vocabulario</h3>
+                            <p>Aprende palabras nuevas con tarjetas interactivas</p>
+                            <div class="status status--info">
+                                <i class="fas fa-cards"></i> 50 palabras
+                            </div>
+                            <div class="points-reward">+5 puntos por palabra</div>
+                        </div>
+
+                        <div class="exercise-card" onclick="startExercise('matching')">
+                            <div class="difficulty-badge beginner">Fácil</div>
+                            <i class="fas fa-puzzle-piece exercise-icon"></i>
+                            <h3>Emparejar Palabras</h3>
+                            <p>Conecta verbos en presente con su pasado</p>
+                            <div class="status status--info">
+                                <i class="fas fa-link"></i> 20 pares
+                            </div>
+                            <div class="points-reward">+10 puntos por par</div>
+                        </div>
+
+                        <div class="exercise-card" onclick="startExercise('spelling')">
+                            <div class="difficulty-badge intermediate">Medio</div>
+                            <i class="fas fa-spell-check exercise-icon"></i>
+                            <h3>Práctica de Escritura</h3>
+                            <p>Escribe correctamente los verbos en pasado</p>
+                            <div class="status status--warning">
+                                <i class="fas fa-keyboard"></i> 25 palabras
+                            </div>
+                            <div class="points-reward">+15 puntos por palabra</div>
+                        </div>
+
+                        <div class="exercise-card" onclick="startExercise('listening')">
+                            <div class="difficulty-badge intermediate">Medio</div>
+                            <i class="fas fa-headphones exercise-icon"></i>
+                            <h3>Escucha y Repite</h3>
+                            <p>Mejora tu pronunciación escuchando audio</p>
+                            <div class="status status--warning">
+                                <i class="fas fa-volume-up"></i> 20 palabras
+                            </div>
+                            <div class="points-reward">+20 puntos por palabra</div>
+                        </div>
+
+                        <div class="exercise-card" onclick="startExercise('sentences')">
+                            <div class="difficulty-badge advanced">Difícil</div>
+                            <i class="fas fa-quote-left exercise-icon"></i>
+                            <h3>Oraciones Completas</h3>
+                            <p>Usa el vocabulario en oraciones reales</p>
+                            <div class="status status--error">
+                                <i class="fas fa-file-alt"></i> 15 oraciones
+                            </div>
+                            <div class="points-reward">+25 puntos por oración</div>
+                        </div>
+
+                        <div class="exercise-card challenge" onclick="startExercise('vocabulary-challenge')">
+                            <div class="difficulty-badge expert">Experto</div>
+                            <i class="fas fa-trophy exercise-icon"></i>
+                            <h3>Desafío de Vocabulario</h3>
+                            <p>Demuestra todo lo que has aprendido</p>
+                            <div class="status status--error">
+                                <i class="fas fa-fire"></i> 30 preguntas
+                            </div>
+                            <div class="points-reward">+1000 puntos bonus</div>
+                        </div>
+                    </div>
+
+                    <div class="study-tips">
+                        <h3><i class="fas fa-lightbulb"></i> Tips para Estudiar Mejor</h3>
+                        <div class="tips-grid">
+                            <div class="tip-card">
+                                <i class="fas fa-clock"></i>
+                                <p>Estudia 15 minutos diarios para mejores resultados</p>
+                            </div>
+                            <div class="tip-card">
+                                <i class="fas fa-repeat"></i>
+                                <p>Repite las palabras en voz alta para memorizar</p>
+                            </div>
+                            <div class="tip-card">
+                                <i class="fas fa-pencil-alt"></i>
+                                <p>Escribe oraciones con las palabras nuevas</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Word Cards Section -->
+        <div id="word-cards" class="screen">
+            <div class="card">
+                <div class="card__body">
+                    <div class="exercise-header">
+                        <button class="btn btn--outline btn--sm" onclick="showMainMenu()">
+                            <i class="fas fa-arrow-left"></i> Volver al Menú
+                        </button>
+                        <div class="progress-info">
+                            <span id="cards-progress"><i class="fas fa-id-card"></i> Palabra 1 de 20</span>
+                            <div class="progress-bar">
+                                <div id="cards-progress-fill" class="progress-fill"></div>
+                            </div>
+                            <div class="points-mini">
+                                <i class="fas fa-gem"></i> <span id="cards-points">0</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="word-card-container">
+                        <div class="vocabulary-card" id="vocab-card">
+                            <div class="card-front">
+                                <div class="word-category">
+                                    <i class="fas fa-tag"></i>
+                                    <span id="word-category">Categoría</span>
+                                </div>
+                                <div class="word-main">
+                                    <h2 id="present-verb">Verbo</h2>
+                                    <p class="pronunciation" id="pronunciation">/pronunciation/</p>
+                                    <button class="play-audio-btn" onclick="playAudio()">
+                                        <i class="fas fa-volume-up"></i>
+                                    </button>
+                                </div>
+                                <div class="word-meaning">
+                                    <p id="word-meaning">Significado en español</p>
+                                </div>
+                                <button class="flip-btn" onclick="flipCard()">
+                                    <i class="fas fa-sync-alt"></i> Ver Pasado
+                                </button>
+                            </div>
+                            
+                            <div class="card-back hidden">
+                                <div class="past-form">
+                                    <h2 id="past-verb">Past Form</h2>
+                                    <p class="past-pronunciation" id="past-pronunciation">/past pronunciation/</p>
+                                    <button class="play-audio-btn" onclick="playPastAudio()">
+                                        <i class="fas fa-volume-up"></i>
+                                    </button>
+                                </div>
+                                <div class="example-sentence">
+                                    <h4><i class="fas fa-quote-left"></i> Ejemplo:</h4>
+                                    <p id="example-sentence">Oración de ejemplo</p>
+                                    <p class="translation" id="example-translation">Traducción</p>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="btn btn--outline" onclick="flipCard()">
+                                        <i class="fas fa-undo"></i> Volver al Presente
+                                    </button>
+                                    <button class="btn btn--success" onclick="markAsKnown()">
+                                        <i class="fas fa-check"></i> ¡Ya la sé!
+                                    </button>
+                                    <button class="btn btn--warning" onclick="needMorePractice()">
+                                        <i class="fas fa-repeat"></i> Necesito practicar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-navigation">
+                        <button class="btn btn--outline" onclick="previousCard()" id="prev-btn" disabled>
+                            <i class="fas fa-chevron-left"></i> Anterior
+                        </button>
+                        <span class="card-counter">
+                            <span id="current-card">1</span> de <span id="total-cards">20</span>
+                        </span>
+                        <button class="btn btn--primary" onclick="nextCard()" id="next-btn">
+                            Siguiente <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Matching Exercise -->
+        <div id="matching" class="screen">
+            <div class="card">
+                <div class="card__body">
+                    <div class="exercise-header">
+                        <button class="btn btn--outline btn--sm" onclick="showMainMenu()">
+                            <i class="fas fa-arrow-left"></i> Volver al Menú
+                        </button>
+                        <div class="progress-info">
+                            <span><i class="fas fa-puzzle-piece"></i> Emparejar Verbos</span>
+                            <div class="points-mini">
+                                <i class="fas fa-gem"></i> <span id="matching-points">0</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2><i class="fas fa-link"></i> Conecta los verbos en presente con su forma en pasado</h2>
+                    <p class="instruction">
+                        <i class="fas fa-hand-pointer"></i> Haz clic en un verbo del presente y luego en su forma del pasado correspondiente.
+                    </p>
+
+                    <div class="matching-container">
+                        <div class="present-column">
+                            <h3><i class="fas fa-clock"></i> Presente</h3>
+                            <div id="present-words" class="words-list">
+                                <!-- Present verbs will be populated by JavaScript -->
+                            </div>
+                        </div>
+                        
+                        <div class="matches-display">
+                            <div class="matches-counter">
+                                <i class="fas fa-check-circle"></i>
+                                <span id="matches-count">0/10</span>
+                                <small>emparejados</small>
+                            </div>
+                        </div>
+
+                        <div class="past-column">
+                            <h3><i class="fas fa-history"></i> Pasado</h3>
+                            <div id="past-words" class="words-list">
+                                <!-- Past verbs will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="matching-feedback" id="matching-feedback"></div>
+
+                    <div id="matching-results" class="results hidden">
+                        <div class="results-celebration">
+                            <i class="fas fa-star celebration-icon"></i>
+                            <h2>¡Emparejamiento Completado!</h2>
+                        </div>
+                        <div class="score-display">
+                            <div class="score-circle">
+                                <span id="matching-score">0/10</span>
+                                <small id="matching-percentage">0%</small>
+                            </div>
+                        </div>
+                        <div id="matching-message" class="result-message"></div>
+                        <div class="result-actions">
+                            <button class="btn btn--primary" onclick="startExercise('matching')">
+                                <i class="fas fa-redo"></i> Intentar de Nuevo
+                            </button>
+                            <button class="btn btn--outline" onclick="showMainMenu()">
+                                <i class="fas fa-home"></i> Volver al Menú
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Other exercises will be implemented similarly -->
+    </div>
+
+    <script src="vocabulary.js"></script>
+</body>
+</html> 
